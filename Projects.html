@@ -75,16 +75,6 @@
 
 
 
-<div class="contentcontainer med right" style="margin-right: -150px;">
-<p>  <font size="3">
-My doctoral thesis under the direction of <a href="https://scholar.google.co.uk/citations?user=HesJcnkAAAAJ&hl=en"  rel="nofollow">  <font size="3" color="black" >  <font size="3" color="blue">Dr. Axel Hutt</a></font>   aimed to investigate the mechanisms underlying the observed specific changes in EEG patterns during propofol-induced anesthesia. To achieve this goal, I worked
-on thalamo-cortical neural mass models to link the effects of anesthetic agents at microscopic
-single neuron level to the macroscopic-scale observables such as EEG signals. In the second part of my  thesis, I worked on optimization algorithms to
-estimate the model parameters by fitting the model spectral power to experimental data.
-
-
-  <div class="cleaner_h30"></div>
-
 
 
 <div class="contentcontainer med right" style="margin-right: -150px;">
@@ -108,20 +98,59 @@ In the context of clinical trials, using Frequentist approach, prior information
 Computational modeling allows us to simulate real-world systems, thus learning about the data generation process, making predictions on unseen data, and justifying the hypotheses. By running various simulations with different inputs, we can gain insight into different potential outcomes, thus providing evidence to support or refute hypotheses regarding the effects and mechanisms of a certain phenomenon. In contrast to forward modeling, which is a top-down approach, model inversion (e.g., simulation-based inference) is a bottom-up strategy that infers hidden causes from observed effects. Having various source of information and system spatio-temporal scales, the Bayesian inference provides a unified framework to merge the models, data, prior information and algorithms to reach reliable scientific conclusion.  This approach allows for the incorporation of uncertainty and prior knowledge in the hypothesis testing process (such as anatomical data, MRI lesion, the target of stimulation or evidence from previous trials on drug efficacy, etc), which is important for understanding the underlying causes of diseases, hence to improve the predictions for better decision-making processes at the individual and group levels.
 
 
-<h1  style="color:#229922"><font size="4"color="white"><strong> <b>2.	What do we need to perform Monte Carlo simulations?
-</b></strong></font></a></h1>
+<br/>
 
+<p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 2.	What do we need to perform Monte Carlo simulations? </a></font> </a></font> </em> <p>
 
 Monte Carlo methods to perform Bayesian inference (inverse problem) involves the following steps:
 <br style="line-height: 10px" />
 1) Analyzing and better understanding the data to extract relevant and low-dimensional features, which can be modeled/fitted.
+<br style="line-height: 10px" />
 2) A Bayesian model of the data generating process, i.e., a statistical model where the probability is used to represent both the uncertainty regarding the output and the uncertainty regarding the input (i.e., parameters or latent states) of the model. In contrast to black box methods, this step requires knowledge about the model components such as hierarchical dependencies in probabilistic model, identifying both dependent variables to be predicted and independent variables that will drive the prediction, as well as specifying prior probability distribution on all unobserved variables/parameters.
+<br style="line-height: 10px" />
 3) Implementation of the Bayesian models in a computer program to sample from the posterior. The efficiency of sampling critically depends on both data and model (the calculation of the likelihood function). Running Monte Carlo methods typically requires a large number of model evaluations, which demand powerful computer resources and high-performance computing. In high dimensional parameter spaces, the higher the number of samples on Monte Carlo methods, the better is the approximation, subsequently, they have a large demand on computational resources.
-
-
 The use of cloud computing for parallel computing offers some advantages over conventional clusters: high accessibility, scalability and pay per usage. Facility Hubs can provide access to supercomputing
 network and cloud computing for data storage, analysis, simulation, and running Monte Carlo algorithms in parallel.
+<br style="line-height: 10px" />
 4) Algorithmic convergence, diagnostics, and validation. Once the model is fitted, it is necessary to assess the convergence to the “true” stationary solutions that help ensure high accuracy and quality decision making. The convergence diagnostics specific to the used algorithm, and posterior behavior analysis (e.g., posterior predictive check), and out-of-sample prediction are necessary to validate the reliability of the model estimations.
+
+<br/>
+
+<p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 3.	How to choose an algorithm to carry out an inverse problem with Monte Carlo? </a></font> </a></font> </em> <p>
+
+The performance of algorithms for inverse problems with Monte Carlo simulations is task-dependent, and there is no uniformly best algorithm across different tasks. This indicate the need for domain expertise and service offerings. In the following, the state-of-the-art algorithms as the bridge the gap between data, models, and decision makers is briefly discussed.
+<br style="line-height: 10px" />
+
+Markov chain Monte Carlo (MCMC) is a non-parametric method that requires explicit evaluation of the likelihood function and is asymptotically unbiased to sample from the posterior distribution (through stochastic transformations). However, evaluation of the target distribution can be prohibitive expensive in high-dimensional spaces, often with the rejection of many proposals that impose the search space exploration to converge very slowly. The sensitivity of MCMC methods to the user-specified algorithm parameters is also a common issue for efficient sampling. While gradient-based algorithms such as Hamiltonian Monte Carlo (HMC) are well suited to sampling from high-dimensional distributions, it may take many evaluations of the log-probability of the target distribution and the gradient for the chain to converge, in particular, when the geometry of the target distribution is highly non-linear. In the presence of parameter degeneracy, sophisticated reparameterization techniques changing local geometry of the posterior is required to improve the efficiency of Monte Carlo sampling.
+<br style="line-height: 10px" />
+Of the alternatives, Variational Inference (VI) turns the Bayesian inference into an optimization problem, which typically results in much faster computation than MCMC methods. While the mean-field VI fails to capture dependencies and multi-modality in the true posterior, the derivation of the full-rank VI requires a major model-specific work on defining a variational family appropriate to the probabilistic model, computing the corresponding objective function, computing gradients, and running a gradient-based optimization algorithm. The probabilistic programming languages (PPLs) solve these issues for automatic inference, by providing self-tuning algorithms and automatic differentiation methods, in which probabilistic models can be specified relatively easily and inference for these models is performed automatically. In particular, Stan, Turing, and PyMC3 are high-level statistical modeling tools for Bayesian inference and probabilistic machine learning. However, the performance of sampling/optimization algorithms in PPLs can be sensitive to the form of model parameterization.
+<br style="line-height: 10px" />
+
+For high-dimensional and complex models, when standard methodologies cannot be applied due to analytic or computational difficulties to calculate the likelihood function, one can use the simulation-based inference (SBI). The core of this methodology only requires forward-simulations from the computer programming of a parametric stochastic simulator (also referred to as generative model), rather than model-specific analytic calculation or exact evaluation of likelihood function. This approach was used for the discovery of the Higgs boson, where a gigantic simulator generates the data but a few parameters needed to be to estimated. The classical method for SBI is known as Approximate Bayesian Computation (ABC). In practice, ABC-related methods suffer from the curse of dimensionality, scale poorly to high-dimensional and non-Gaussian data, and their performance depends critically on the choice of discrepancy measure (summary statistics), and the tolerance level which determines whether the measures are sufficiently similar. Normalizing-Flows (NFs) are a novel family of generative models that convert a simple distribution into any target complex distribution, where both sampling and density evaluation can be efficient and exact.  In this approach, a simple base probability distribution (e.g., a standard normal) is transformed into a more complex (potentially multi-modal) target distribution through a sequence of invertible mapping (implemented by deep neural network). These neural density estimators form a family of methods that estimate conditional densities with the aid of neural networks, designed to estimate the full posterior distribution, dealing with degeneracy and potential multi-modalities.
+
+
+<br/>
+
+<p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 3.	4.	Who uses Monte Carlo Simulations? </a></font> </a></font> </em> <p>
+
+
+Many companies use Monte Carlo simulations as an important part of their decision-making process. General Motors, Procter & Gamble, Pfizer, Bristol-Myers Squibb, and Eli Lilly use Monte Carlo simulations to estimate both the average return and the risk factor of new products. Easy to use, integrated with open source, comprehensive and flexible, Webdemo, Cloud computing, graphical interface for user (in uploading data and loading results), with free trial, are the important features that industrial partners attempt to offer. High fidelity simulations, AI acceleration without sacrificing accuracy is the trend for all applications that use Monte Carlo simulations.
+<br style="line-height: 10px" />
+
+IBM Cloud Functions can also assist in Monte Carlo Simulations. IBM Cloud Functions is a serverless functions-as-a-service platform that executes code in response to incoming events. Read more about how to conduct a Monte Carlo Simulations using IBM tooling, here.
+The Spectrum Symphony offering on IBM Cloud is used to create all the necessary resources and to configure the HPC cluster for evaluating the Monte Carlo workload.  IBM Cloud Functions can provide a phenomenal boost to a Monte Carlo simulations, which is considered to be an important High-Performance Computing workload. IBM® SPSS® Statistics is a powerful statistical software platform. It offers a user-friendly interface and a robust set of features that lets your organization quickly extract actionable insights from your data. Advanced statistical procedures help ensure high accuracy and quality decision making.
+
+<br style="line-height: 10px" />
+
+At CERN, the production of Monte Carlo simulations is an important step to investigate several aspects of the experimental apparatus, minimizing the instrumental errors due to target acceptance, geometry and the errors deriving from the analysis cuts. Geant4 is a platform for the simulation of the passage of particles through matter using Monte Carlo methods. Geant4 includes facilities for handling geometry, tracking, detector response, run management, visualization and user interface. For many physics simulations, this means less time needs to be spent on the low level details, and researchers can start immediately on the more important aspects of the simulation. A team of researchers at CERN, SURFsara, and Intel, are investigating the use of deep learning engines for fast simulation. This work is being carried out as part of Intel’s long-standing collaboration with CERN through CERN openlab. CERN openlab is a public-private partnership, founded in 2001, which works to help accelerate innovation in Information and Communications Technology (ICT). Today, Intel and CERN are working together on a broad range of investigations, from hardware evaluation to HPC and AI.
+
+<br style="line-height: 10px" />
+
+A service on Monte Carlo simulations is required to include all four steps as data analysis, model selection, programming and cloud computing, as well as the validation, which it is highly challenging to integrate all aforementioned steps in a pipeline. The current services are offered as only either cloud computing or software production. The full service in particular model selection, state-of-the-art algorithms, and validation is currently lacking. In the context of neuroscience, we have extensive experience in working with various neural models and dynamical systems with the state-of the-art algorithms (implemented in PPLs or by deep neural networks) to guide clinician and researchers and deploy this service.
+
+
+
+
 
 
 
