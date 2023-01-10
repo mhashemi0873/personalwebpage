@@ -113,12 +113,11 @@ Computational modeling allows us to simulate real-world systems, thus learning a
 <br/>
 
 <figure>
-<img src="uploads/Fig2_MC.png" alt="flamingo">
+<img src="uploads/Fig1_MC.png" alt="flamingo">
 <figcaption><i>Fig. 1</i>  The application of Monte Carlo simulations for numerical integration, averaging, inverse problem, and generating draws from a probability distribution to estimate the uncertaining of events, ranging from materials science, economy, biology to quantum physics.</figcaption>
 </figure>
 
 
-<img src="uploads/Fig2_MC.png" alt="" />
 
 
 <p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 2.	What do we need to perform Monte Carlo simulations? </a></font> </a></font> </em> <p>
@@ -149,7 +148,7 @@ Markov chain Monte Carlo (MCMC) is a non-parametric method that requires explici
 Of the alternatives, Variational Inference (VI) turns the Bayesian inference into an optimization problem, which typically results in much faster computation than MCMC methods. While the mean-field VI fails to capture dependencies and multi-modality in the true posterior, the derivation of the full-rank VI requires a major model-specific work on defining a variational family appropriate to the probabilistic model, computing the corresponding objective function, computing gradients, and running a gradient-based optimization algorithm. The probabilistic programming languages (PPLs) solve these issues for automatic inference, by providing self-tuning algorithms and automatic differentiation methods, in which probabilistic models can be specified relatively easily and inference for these models is performed automatically. In particular, Stan, Turing, and PyMC3 are high-level statistical modeling tools for Bayesian inference and probabilistic machine learning. However, the performance of sampling/optimization algorithms in PPLs can be sensitive to the form of model parameterization.
 <br style="line-height: 10px" />
 
-For high-dimensional and complex models, when standard methodologies cannot be applied due to analytic or computational difficulties to calculate the likelihood function, one can use the simulation-based inference (SBI). The core of this methodology only requires forward-simulations from the computer programming of a parametric stochastic simulator (also referred to as generative model), rather than model-specific analytic calculation or exact evaluation of likelihood function. This approach was used for the discovery of the Higgs boson, where a gigantic simulator generates the data but a few parameters needed to be to estimated. The classical method for SBI is known as Approximate Bayesian Computation (ABC). In practice, ABC-related methods suffer from the curse of dimensionality, scale poorly to high-dimensional and non-Gaussian data, and their performance depends critically on the choice of discrepancy measure (summary statistics), and the tolerance level which determines whether the measures are sufficiently similar. Normalizing-Flows (NFs) are a novel family of generative models that convert a simple distribution into any target complex distribution, where both sampling and density evaluation can be efficient and exact.  In this approach, a simple base probability distribution (e.g., a standard normal) is transformed into a more complex (potentially multi-modal) target distribution through a sequence of invertible mapping (implemented by deep neural network). These neural density estimators form a family of methods that estimate conditional densities with the aid of neural networks, designed to estimate the full posterior distribution, dealing with degeneracy and potential multi-modalities.
+For high-dimensional and complex models, when standard methodologies cannot be applied due to analytic or computational difficulties to calculate the likelihood function, one can use the simulation-based inference (SBI). The core of this methodology only requires forward-simulations from the computer programming of a parametric stochastic simulator (also referred to as generative model), rather than model-specific analytic calculation or exact evaluation of likelihood function. This approach was used for the discovery of the Higgs boson (see Fig. 2.), where a gigantic simulator generates the data but a few parameters needed to be to estimated. The classical method for SBI is known as Approximate Bayesian Computation (ABC). In practice, ABC-related methods suffer from the curse of dimensionality, scale poorly to high-dimensional and non-Gaussian data, and their performance depends critically on the choice of discrepancy measure (summary statistics), and the tolerance level which determines whether the measures are sufficiently similar. Normalizing-Flows (NFs) are a novel family of generative models that convert a simple distribution into any target complex distribution, where both sampling and density evaluation can be efficient and exact.  In this approach, a simple base probability distribution (e.g., a standard normal) is transformed into a more complex (potentially multi-modal) target distribution through a sequence of invertible mapping (implemented by deep neural network). These neural density estimators form a family of methods that estimate conditional densities with the aid of neural networks, designed to estimate the full posterior distribution, dealing with degeneracy and potential multi-modalities.
 
 
 <br/>
@@ -176,6 +175,19 @@ A service on Monte Carlo simulations is required to include all four steps as da
 <br/>
 <br/>
 
+<figure>
+<img src="uploads/Fig2_MC.png" alt="flamingo">
+<figcaption><i>Fig. 2</i>  Particle physics processes are usually modelled with complex Monte-Carlo simulations of the hard process, parton shower, and detector interactions. These simulators typically do not admit a tractable likelihood function: given a (potentially high-dimensional) set of observables, it is usually not possible to calculate the probability of these observables for some model parameters. Particle physicists usually tackle this problem of “likelihood-free inference” by hand-picking a few “good” observables or summary statistics and filling histograms of them. But this conventional approach discards the information in all other observables and often does not scale well to high-dimensional problems. Simulation-based-inference (SBI) with state-of-the-art deep learning algorithms called Normalizing-Flows can solve these problems.
+Credit: CERN. See: https://github.com/madminer-tool/madminer
+
+<a href="https://github.com/madminer-tool/madminer"  rel="nofollow">  <font size="4" color="black" >  <font size="3" color="black">MadMiner </a></font> <font size="4" color="black">
+
+
+</figcaption>
+</figure>
+
+<br/>
+<br/>
 
 <p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> <b>Amortized Bayesian inference on specific EEG features during general anesthesia:</b> </a></font> </a></font> </em> <p>
 
