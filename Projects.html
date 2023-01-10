@@ -113,7 +113,7 @@ Computational modeling allows us to simulate real-world systems, thus learning a
 <br/>
 
 <figure>
-<img src="uploads/Fig1_MC.png" alt="flamingo", width=10%>
+<img src="uploads/Fig1_MC.jpeg" alt="flamingo", width=10%>
 <figcaption><i>Fig. 1</i>  The application of Monte Carlo simulations for numerical integration, averaging, inverse problem, and generating draws from a probability distribution to estimate the uncertaining of events, ranging from materials science, economy, biology to quantum physics.</figcaption>
 </figure>
 
@@ -176,7 +176,7 @@ A service on Monte Carlo simulations is required to include all four steps as da
 <br/>
 
 <figure>
-<img src="uploads/Fig2_MC.png" alt="flamingo">
+<img src="uploads/Fig2_MC.jpg" alt="flamingo">
 <figcaption><i>Fig. 2</i>  Particle physics processes are usually modelled with complex Monte-Carlo simulations of the hard process, parton shower, and detector interactions. These simulators typically do not admit a tractable likelihood function: given a (potentially high-dimensional) set of observables, it is usually not possible to calculate the probability of these observables for some model parameters. Particle physicists usually tackle this problem of “likelihood-free inference” by hand-picking a few “good” observables or summary statistics and filling histograms of them. But this conventional approach discards the information in all other observables and often does not scale well to high-dimensional problems. Simulation-based-inference (SBI) with state-of-the-art deep learning algorithms called Normalizing-Flows can solve these problems.
 Credit: CERN. See: <a href="https://github.com/madminer-tool/madminer">TVB</a>
 
@@ -219,6 +219,14 @@ In a Bayesian framework, for the purposes of model comparison, selection and ave
 <br/>
 
 Regarding the data features for training the deep neural networks, using Wiener-Khinchin theorem [38], we can analytically calculate the spectral power of a stochastic system (to avoid the computational burden due to numerical integration of the model equations) that dramatically alleviate the computational cost of model inversion due to the variability in observations. Following the model reparameterization in frequency domain, then the artificial neural network can learn the spectral features and following the training, they can exactly reproduce the propofol-induced changes in the EEG power spectrum across subjects. During sedation before achieving full general anaesthesia, the observed specific changes in electroencephalographic (EEG) rhythms comprise increased activity in the δ− (0.5−4 Hz) and α− (8−13 Hz) frequency bands over the frontal region, but increased δ− and decreased α−activity over the occipital region [6-10]. An increased GABAergic inhibition onto TC cells results in an α− resonance that is reinforced by reciprocal corticothalamic feedback, and hence leads to the emergence of frontal α−activity. This frontal enhancement and occipital attenuation of α−activity is commonly termed anteriorization [6]. Another prominent feature in the EEG of some patients is the emergence of a strong power peak in the β-frequency band, which moves to the α-frequency band while increasing the anaesthetic concentration. This feature is called the beta-buzz [16]. These features can be sufficiently informative for the convergence of Normalizing Flows or VAEs. Using these novel machine-learning techniques in the spirit of Bayesian inference, then we are able to reliably evaluate different hypotheses regarding the sufficient changes/causality in level in transfer function properties and synaptic parameters and/or in feedback loops of excitatory-inhibitory populations for the generation of spectral EEG characteristics.  Moreover, maximizing the marginal likelihood function using deep neural networks based on dynamical properties of the system such as the fixed points or the bifurcation diagram can significantly improve training performance.  By inferring the causality in TC system, we can provide evidence for different hypotheses such as if the thalamus itself constitutes the primary focus of anesthetic modulation, or if changes that appear within it are secondary effects from other brain regions.  Finally, performing a group analysis using cross-validation and hypothesis testing (by fully Bayesian model comparison metric, WAIC), we can then elucidate the effects of anesthetics on the level of excitation-inhibition as well as the feedback loops in the TC system, and likely on the time scale of the system for a cohort of subjects. Understanding the brain organization and the role of its subnetworks associated with the transition from awake condition to anesthetic-induced state will provide new insights into the mechanisms of alterations in consciousness, and can lead to novel therapies and anesthetics targeting specific structures.
+
+
+<br/>
+
+
+<figure>
+<img src="uploads/TCmodule.png" alt="flamingo">
+<figcaption><i>Fig. 3</i> The model consists of four types of neural populations, namely, cortical excitatory (E) and inhibitory neurons (I), thalamo-cortical relay (S), and thalamic reticular neurons (R). The blue arrows show excitatory connections while the red connections with filled circle ends indicate inhibitory connections. The connections from cortex to thalamus is associated with the time delay τTC, whereas the latency for signals in reverse direction is τ_CT. The external input to the system originating from subthalamic areas is considered as a non-specific input to relay neurons.</a>
 
 
 <br/>
