@@ -83,10 +83,13 @@ My projests poposals focus on a comprehensive approach to brain (dis)function, m
 <br/>
 <br/>
 
-<b>Contact me for collaboration!</b>
+<b>Contact me for a possible collaboration!</b>
+
+<div class="image_fl"><img src="uploads/AIML.png" alt="image" width="330" height="170"/></div>
+<div class="contentcontainer med right" style="margin-right: -10px;">
 
 
-  <div class="cleaner_h30"></div>
+<div class="cleaner_h30"></div>
 
 
 <div class="contentcontainer med right" style="margin-right: -150px;">
@@ -96,8 +99,7 @@ My projests poposals focus on a comprehensive approach to brain (dis)function, m
 
 
 <p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 1. What is Monte Carlo used for? </a></font> </a></font> </em> <p>
-Monte Carlo simulations, also known as the Monte Carlo methods are a broad class of stochastic algorithms that rely on repeated random sampling, which are mainly used in three problem classes: inverse problem (optimization), numerical integration, and generating draws from a probability distribution to estimate the possible outcomes of an uncertain event (see Fig. 1). For instance, to understand the impact of risk and uncertainty in prediction and forecasting models, Monte Carlo simulations are used to estimate the probability of different outcomes in a process that cannot easily be predicted due to the intervention of random variables. Monte Carlo simulations let us to analyze all the possible outcomes of the decisions and assess the impact of risk, allowing for better decision making. Furthermore, mathematical formulation of many physical and biological systems contains parameters that are typically unknown or known only with large uncertainty. The uncertainty associated with unknown parameters translates into an uncertainty in model prediction, consequently, in hypothesis evaluation, which itself significantly affects decision-making processes. Moreover, dynamic models involve latent variables, which cannot be measured directly, hence requiring inference from latent space (abstract representation of a real-world system) to understand the emergent dynamics of a complex system. Bayesian inference is a principled method for statistical inference that updates the prior belief about a hypothesis with new evidence from observed data, thus naturally characterizing uncertainty over unknown quantities. Bayes rule provides a formal way of combining prior information (domain expertise before seeing data) with the likelihood function (data generative process) to form the posterior of events, which encodes all the relevant information for inference and prediction on unseen data. This probabilistic methodology provides an estimation of unknown quantities by incorporating the uncertainty or variation in assumptions, (unmeasured) latent variables, (measured) observations, and algorithmic error/predictions.
-
+Monte Carlo simulations, also known as the Monte Carlo methods are a broad class of stochastic algorithms that rely on repeated random sampling, which are mainly used in three problem classes: inverse problem (optimization), numerical integration, and generating draws from a probability distribution to estimate the possible outcomes of an uncertain event (see Fig. 1). For instance, to understand the impact of risk and uncertainty in prediction and forecasting models, Monte Carlo simulations are used to estimate the probability of different outcomes in a process that cannot easily be predicted due to the intervention of random variables. Monte Carlo simulations let us to analyze all the possible outcomes of the decisions and assess the impact of risk, allowing for better decision making. Furthermore, mathematical formulation of many physical and biological systems contains parameters that are typically unknown or known only with large uncertainty. The uncertainty associated with unknown parameters translates into an uncertainty in model prediction, consequently, in hypothesis evaluation, which itself significantly affects decision-making processes. Moreover, dynamic models involve latent variables, which cannot be measured directly, hence requiring inference from latent space (abstract representation of a real-world system) to understand the emergent dynamics of a complex system. Bayesian inference is a principled method for statistical inference that updates the prior belief about a hypothesis with new evidence from observed data, thus naturally characterizing uncertainty over unknown quantities.
 <br/>
 <br/>
 
@@ -106,7 +108,7 @@ Monte Carlo simulations, also known as the Monte Carlo methods are a broad class
 
 <figure>
 <img src="uploads/Fig1_MC.jpeg" alt="flamingo", width=100%>
-<figcaption><i></i><font size="2.5">  <i>Fig. 1) The application of Monte Carlo simulations for numerical integration, averaging, inverse problem, and generating draws from a probability distribution to estimate the uncertaining of events, ranging from materials science, economy, biology to quantum physics.</i></figcaption>
+<figcaption><i></i><font size="2.5">  <i>Fig. 1) The application of Monte Carlo simulations for numerical integration, averaging, inverse problem, and generating draws from a probability distribution to estimate the uncertaining of events, ranging from materials science, economy, biology to quantum physics. This figure has been adapted from other sources.</i></figcaption>
 </figure>
 
 
@@ -117,7 +119,7 @@ Computational modeling allows us to simulate real-world systems, thus learning a
 <br/>
 <br/>
 
-The Bayesian framework offers a powerful approach to deal with model uncertainty in parameter estimation, and a principled method for model prediction with a broad range of applications including clinical hypothesis testing. The Bayes theorem states that the posterior probability of θ can be calculated proportional to the product of the prior probability of θ and the data likelihood, i.e., Prob(θ|y) ∝ Prob(θ) Prob(y|θ).
+The Bayesian framework (see Fig 2.) offers a powerful approach to deal with model uncertainty in parameter estimation, and a principled method for model prediction with a broad range of applications including clinical hypothesis testing. The Bayes theorem states that the posterior probability of θ can be calculated proportional to the product of the prior probability of θ and the data likelihood, i.e., Prob(θ|y) ∝ Prob(θ) Prob(y|θ).
 Bayesian techniques infer the distribution of unknown parameters (the posteriors) of the underlying data generating process given only observed responses and prior information about the underlying generative process.  Moreover, Bayesian framework allows us to integrate patient-specific information in the prior knowledge as well as the uncertainty regarding the system organization (neural circuits) in the model likelihood function to improve out-of-sample prediction accuracy.
 
 
@@ -129,6 +131,15 @@ In the context of clinical trials, using Frequentist approach, prior information
 <br/>
 <br/>
 
+
+
+<figure>
+<img src="uploads/BayesRule.png" alt="flamingo", width=100%>
+<figcaption><i></i><font size="2.5">  <i>Fig. 2) Bayes rule provides a formal way of combining prior information (domain expertise before seeing data) with the likelihood function (data generative process) to form the posterior of events, which encodes all the relevant information for inference and prediction on unseen data. This probabilistic methodology provides an estimation of unknown quantities by incorporating the uncertainty or variation in assumptions, (unmeasured) latent variables, (measured) observations, and algorithmic error/predictions. This figure has been adapted from other sources. </i></figcaption>
+</figure>
+
+
+<br/>
 
 
 <p><font size="3">  <font size="4" style="font-family:courier" color="white"><font size="4" color="white"> 2.	What do we need to perform Monte Carlo simulations? </a></font> </a></font> </em> <p>
@@ -159,7 +170,7 @@ Markov chain Monte Carlo (MCMC) is a non-parametric method that requires explici
 Of the alternatives, Variational Inference (VI) turns the Bayesian inference into an optimization problem, which typically results in much faster computation than MCMC methods. While the mean-field VI fails to capture dependencies and multi-modality in the true posterior, the derivation of the full-rank VI requires a major model-specific work on defining a variational family appropriate to the probabilistic model, computing the corresponding objective function, computing gradients, and running a gradient-based optimization algorithm. The probabilistic programming languages (PPLs) solve these issues for automatic inference, by providing self-tuning algorithms and automatic differentiation methods, in which probabilistic models can be specified relatively easily and inference for these models is performed automatically. In particular, Stan, Turing, and PyMC3 are high-level statistical modeling tools for Bayesian inference and probabilistic machine learning. However, the performance of sampling/optimization algorithms in PPLs can be sensitive to the form of model parameterization.
 <br style="line-height: 10px" />
 
-For high-dimensional and complex models, when standard methodologies cannot be applied due to analytic or computational difficulties to calculate the likelihood function, one can use the simulation-based inference (SBI). The core of this methodology only requires forward-simulations from the computer programming of a parametric stochastic simulator (also referred to as generative model), rather than model-specific analytic calculation or exact evaluation of likelihood function. This approach was used for the discovery of the Higgs boson (see Fig. 2.), where a gigantic simulator generates the data but a few parameters needed to be to estimated. The classical method for SBI is known as Approximate Bayesian Computation (ABC). In practice, ABC-related methods suffer from the curse of dimensionality, scale poorly to high-dimensional and non-Gaussian data, and their performance depends critically on the choice of discrepancy measure (summary statistics), and the tolerance level which determines whether the measures are sufficiently similar. Normalizing-Flows (NFs) are a novel family of generative models that convert a simple distribution into any target complex distribution, where both sampling and density evaluation can be efficient and exact.  In this approach, a simple base probability distribution (e.g., a standard normal) is transformed into a more complex (potentially multi-modal) target distribution through a sequence of invertible mapping (implemented by deep neural network). These neural density estimators form a family of methods that estimate conditional densities with the aid of neural networks, designed to estimate the full posterior distribution, dealing with degeneracy and potential multi-modalities.
+For high-dimensional and complex models, when standard methodologies cannot be applied due to analytic or computational difficulties to calculate the likelihood function, one can use the simulation-based inference (SBI). The core of this methodology only requires forward-simulations from the computer programming of a parametric stochastic simulator (also referred to as generative model), rather than model-specific analytic calculation or exact evaluation of likelihood function. This approach was used for the discovery of the Higgs boson (see Fig. 3.), where a gigantic simulator generates the data but a few parameters needed to be to estimated. The classical method for SBI is known as Approximate Bayesian Computation (ABC). In practice, ABC-related methods suffer from the curse of dimensionality, scale poorly to high-dimensional and non-Gaussian data, and their performance depends critically on the choice of discrepancy measure (summary statistics), and the tolerance level which determines whether the measures are sufficiently similar. Normalizing-Flows (NFs) are a novel family of generative models that convert a simple distribution into any target complex distribution, where both sampling and density evaluation can be efficient and exact.  In this approach, a simple base probability distribution (e.g., a standard normal) is transformed into a more complex (potentially multi-modal) target distribution through a sequence of invertible mapping (implemented by deep neural network). These neural density estimators form a family of methods that estimate conditional densities with the aid of neural networks, designed to estimate the full posterior distribution, dealing with degeneracy and potential multi-modalities.
 
 
 <br/>
@@ -189,7 +200,7 @@ A service on Monte Carlo simulations is required to include all four steps as da
 <div class="image_wrapper image_fl"><img src="uploads/Fig2_MC.jpg" alt="image" width="680" height="380 "/></div>
 <div class="contentcontainer med right" style="margin-right: -20px;">
 
-<p><font size="2.5" Fig. 2) </i> <i>   Fig. 2) Particle physics processes are usually modelled with complex Monte-Carlo simulations of the hard process, parton shower, and detector interactions. These simulators typically do not admit a tractable likelihood function: given a (potentially high-dimensional) set of observables, it is usually not possible to calculate the probability of these observables for some model parameters. Particle physicists usually tackle this problem of “likelihood-free inference” by hand-picking a few “good” observables or summary statistics and filling histograms of them. But this conventional approach discards the information in all other observables and often does not scale well to high-dimensional problems. Simulation-based-inference (SBI) with state-of-the-art deep learning algorithms called Normalizing-Flows can solve these problems.
+<p><font size="2.5" Fig. 3) </i> <i>   Fig. 3) Particle physics processes are usually modelled with complex Monte-Carlo simulations of the hard process, parton shower, and detector interactions. These simulators typically do not admit a tractable likelihood function: given a (potentially high-dimensional) set of observables, it is usually not possible to calculate the probability of these observables for some model parameters. Particle physicists usually tackle this problem of “likelihood-free inference” by hand-picking a few “good” observables or summary statistics and filling histograms of them. But this conventional approach discards the information in all other observables and often does not scale well to high-dimensional problems. Simulation-based-inference (SBI) with state-of-the-art deep learning algorithms called Normalizing-Flows can solve these problems.
 Credit: CERN. See:</i> </i> <a href="https://github.com/madminer-tool/madminer"> <a href="https://github.com/madminer-tool/madminer"  rel="nofollow">  <font size="4" color="black" >  <font size="2" color="blue">MadMiner </a></font> <font size="4" color="black">
 </p></a></font>
 
@@ -237,7 +248,7 @@ Regarding the data features for training the deep neural networks, using Wiener-
 <br/>
 
 
-<div class="image_fl"><img src="uploads/TCmodule.png" alt="image" width="730" height="580 "/></div>
+<div class="image_fl"><img src="uploads/TCmodule.png" alt="image" width="730" height="500 "/></div>
 <div class="contentcontainer med right" style="margin-right: -10px;">
   <br/>
   <br/>
@@ -249,11 +260,10 @@ Regarding the data features for training the deep neural networks, using Wiener-
   <br/>
   <br/>
   <br/>
-  <br/>
-  <br/>
-  <br/>
 
-<p><font size="2.5"  <i> <i> Fig. 3) The model consists of four types of neural populations, namely, cortical excitatory (E) and inhibitory neurons (I), thalamo-cortical relay (S), and thalamic reticular neurons (R). The blue arrows show excitatory connections while the red connections with filled circle ends indicate inhibitory connections. The connections from cortex to thalamus is associated with the time delay τTC, whereas the latency for signals in reverse direction is τ_CT. The external input to the system originating from subthalamic areas is considered as a non-specific input to relay neurons.</i>
+
+
+<p><font size="2.5"  <i> <i> Fig. 3) The model consists of four types of neural populations, namely, cortical excitatory (E) and inhibitory neurons (I), thalamo-cortical relay (S), and thalamic reticular neurons (R). The blue arrows show excitatory connections while the red connections with filled circle ends indicate inhibitory connections. The connections from cortex to thalamus is associated with the time delay τ_TC, whereas the latency for signals in reverse direction is τ_CT. The external input to the system originating from subthalamic areas is considered as a non-specific input to relay neurons.</i>
 </p></a></font>
 
 
