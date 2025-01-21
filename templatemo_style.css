@@ -11,7 +11,7 @@ body {
 	color: #555a4a;
     background: #a0c73f;
 	font-size: 12px;
-	line-height: 1.5em; 
+	line-height: 1.5em;
 	background-repeat: no-repeat;
 	background-position: right;
 }
@@ -85,14 +85,14 @@ em { color: #f9a834; }
 #contact_form form .input_field { width: 440px; padding: 8px; background: #333028; border: 1px solid #886; color: #FFF; }
 #contact_form form label { display: block; width: 100px; margin-right: 10px; font-size: 14px; margin-bottom: 3px; }
 
-#contact_form form textarea { 
-	width: 440px;  
-	height: 120px; 
-	padding: 8px; 
-	background: #333028; 
-	font-family: Arial, Helvetica, sans-serif;	
-	border: 1px solid #886; 
-	color: #FFF; 
+#contact_form form textarea {
+	width: 440px;
+	height: 120px;
+	padding: 8px;
+	background: #333028;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px solid #886;
+	color: #FFF;
 }
 
 #contact_form form .submit_btn {
@@ -104,22 +104,22 @@ em { color: #f9a834; }
 	font-size: 15px;
 }
 
-#gallery_container { 
-	clear: both; 
-	margin-top: 30px; 
-	padding-right: 40px; 
-	width: 480px; 
-	height: 320px; 
-	overflow: auto; 
-} 
+#gallery_container {
+	clear: both;
+	margin-top: 30px;
+	padding-right: 40px;
+	width: 480px;
+	height: 320px;
+	overflow: auto;
+}
 
 #gallery_container .gallery_box {
 	clear: both;
-	display: block; 
+	display: block;
 	padding: 0;
 	margin: 0 0 40px 0;
 }
- 
+
 .gallery_box img {
 	float: left;
 	width: 120px;
