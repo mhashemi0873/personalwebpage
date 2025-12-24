@@ -221,3 +221,32 @@ ul.navigation a:focus {
     margin-right: 0 !important;
   }
 }
+
+
+@media (max-width: 768px) {
+  body.contacts-page #slider,
+  body.contacts-page #templatemo_main,
+  body.contacts-page #content,
+  body.contacts-page .scrollContainer,
+  body.contacts-page .scrollContainer .panel,
+  body.contacts-page .coda-slider,
+  body.contacts-page .stripViewer,
+  body.contacts-page .panelContainer {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.contacts-page #content {
+    background: none !important; /* optional but usually necessary on mobile */
+  }
+
+  body.contacts-page #templatemo_footer {
+    clear: both !important;
+  }
+
+  /* Your negative margins blow up mobile layouts */
+  body.contacts-page .contentcontainer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
