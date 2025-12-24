@@ -147,3 +147,28 @@ ul.navigation a:focus {
 .hide {
     display: none;
 }
+
+/* Keep the original template look; just scale it on small screens */
+@media (max-width: 980px) {
+  #slider {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
+
+@media (max-width: 768px) {
+  #slider {
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
+
+@media (max-width: 480px) {
+  #slider {
+    transform: scale(0.60);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
