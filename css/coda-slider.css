@@ -172,3 +172,17 @@ ul.navigation a:focus {
   }
   body { overflow-x: hidden; }
 }
+
+@media (max-width: 768px) {
+  body.home-page #content,
+  body.home-page .scroll,
+  body.home-page .scrollContainer,
+  body.home-page .scrollContainer div.panel {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.home-page #slider {
+    height: auto !important;
+  }
+}
