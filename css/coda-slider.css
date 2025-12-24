@@ -148,27 +148,30 @@ ul.navigation a:focus {
     display: none;
 }
 
-@media (max-width: 768px) {
-    /* Reset the fixed heights causing the ghost space */
-    #content,
-    .scroll,
-    .scrollContainer,
-    .scrollContainer div.panel {
+/* Remove the old transform scale media queries and replace with this */
+@media (max-width: 900px) {
+    #slider {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column; /* Stack sidebar on top of content */
+    }
+
+    #templatemo_sidebar, #templatemo_main {
+        float: none;
+        width: 100%;
+    }
+
+    /* Reset fixed heights so the page wraps around the content */
+    #content, .scroll, .scrollContainer div.panel {
         height: auto !important;
         min-height: 0 !important;
-        padding-bottom: 20px !important; /* Controlled space at the bottom */
-    }
-
-    #slider {
-        transform: none !important; /* Stop scaling, which leaves gaps */
-        width: 100%;
-        padding: 20px;
-    }
-
-    /* Remove the negative margins that cause horizontal scrolling/gaps */
-    .contentcontainer {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
         width: 100% !important;
+        background-image: none; /* Remove fixed bg images that might crop */
+    }
+
+    /* Fix the negative margins that push content off-screen */
+    .contentcontainer {
+        margin: 0 !important;
     }
 }
