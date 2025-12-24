@@ -186,3 +186,38 @@ ul.navigation a:focus {
     height: auto !important;
   }
 }
+
+
+@media (max-width: 768px) {
+
+  /* Contacts page: kill the fixed-height slider boxes */
+  body.contacts-page #content,
+  body.contacts-page .scroll,
+  body.contacts-page .scrollContainer,
+  body.contacts-page .scrollContainer .panel {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Also stop the internal scroll area that leaves blank space */
+  body.contacts-page .scroll {
+    overflow: visible !important;
+  }
+
+  /* Optional: the background image on #content is designed for fixed height.
+     If it looks weird on mobile, disable it only for Contacts. */
+  body.contacts-page #content {
+    background: none !important;
+  }
+
+  /* Reduce “everything moved down” feeling on mobile */
+  body.contacts-page #templatemo_main {
+    padding-top: 0 !important;
+  }
+
+  /* Your HTML uses a lot of negative margins; neutralize them on mobile */
+  body.contacts-page .contentcontainer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
