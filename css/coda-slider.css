@@ -186,30 +186,3 @@ ul.navigation a:focus {
     height: auto !important;
   }
 }
-
-@media (max-width: 768px) {
-  body.contacts-page #slider,
-  body.contacts-page #templatemo_main,
-  body.contacts-page #content,
-  body.contacts-page .scroll,
-  body.contacts-page .scrollContainer,
-  body.contacts-page .scrollContainer .panel {
-    height: auto !important;
-    min-height: 0 !important;
-  }
-
-  body.contacts-page #templatemo_sidebar,
-  body.contacts-page #templatemo_main {
-    float: none !important;
-    width: auto !important;
-  }
-
-  body.contacts-page .contentcontainer {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  body.contacts-page {
-    overflow-x: hidden;
-  }
-}
