@@ -148,30 +148,41 @@ ul.navigation a:focus {
     display: none;
 }
 
-/* Remove the old transform scale media queries and replace with this */
-@media (max-width: 900px) {
-    #slider {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column; /* Stack sidebar on top of content */
-    }
+/* Keep the original template look; just scale it on small screens */
+@media (max-width: 980px) {
+  #slider {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
 
-    #templatemo_sidebar, #templatemo_main {
-        float: none;
-        width: 100%;
-    }
+@media (max-width: 768px) {
+  #slider {
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
 
-    /* Reset fixed heights so the page wraps around the content */
-    #content, .scroll, .scrollContainer div.panel {
-        height: auto !important;
-        min-height: 0 !important;
-        width: 100% !important;
-        background-image: none; /* Remove fixed bg images that might crop */
-    }
+@media (max-width: 480px) {
+  #slider {
+    transform: scale(0.60);
+    transform-origin: top left;
+  }
+  body { overflow-x: hidden; }
+}
 
-    /* Fix the negative margins that push content off-screen */
-    .contentcontainer {
-        margin: 0 !important;
-    }
+@media (max-width: 768px) {
+  body.home-page #content,
+  body.home-page .scroll,
+  body.home-page .scrollContainer,
+  body.home-page .scrollContainer div.panel {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.home-page #slider {
+    height: auto !important;
+  }
 }
