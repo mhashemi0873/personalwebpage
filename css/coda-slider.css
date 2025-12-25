@@ -165,9 +165,9 @@ ul.navigation a:focus {
   body { overflow-x: hidden; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 280px) {
   #slider {
-    transform: scale(0.60);
+    transform: scale(0.10);
     transform-origin: top left;
   }
   body { overflow-x: hidden; }
