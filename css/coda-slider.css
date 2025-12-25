@@ -148,9 +148,9 @@ ul.navigation a:focus {
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 568px) {
   #slider {
-    transform: scale(0.75);
+    transform: scale(0.5);
     transform-origin: top left;
     height: auto !important; /* Allow the container to shrink */
   }
