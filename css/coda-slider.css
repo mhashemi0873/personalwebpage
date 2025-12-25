@@ -7,7 +7,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    display: block; /* changed to block for easier mobile handling */
+    display: block;
     min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     display: flex;
     flex-direction: column;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out; /* Smooth slide animation */
+    transition: transform 0.3s ease-in-out;
 }
 
 .profile-header { margin-bottom: 2rem; }
@@ -53,14 +53,13 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .nav-links a:hover {
     background-color: #34495e;
     color: #fff;
-    padding-left: 15px; /* Slide effect */
+    padding-left: 15px;
 }
-/* The Arrow on the left */
 .nav-links a::before { content: "➤"; margin-right: 10px; font-size: 0.8rem; }
 
 /* --- 3. MAIN CONTENT --- */
 .main-content {
-    margin-left: 280px; /* Push content to right of sidebar */
+    margin-left: 280px; /* Desktop: Push content to right of sidebar */
     padding: 3rem 4rem;
     max-width: 1000px;
 }
@@ -76,10 +75,11 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     color: #2c3e50;
 }
 
-/* --- 4. COMPONENT STYLES (Cards, Intros, etc.) --- */
+/* --- 4. CARDS & SECTIONS --- */
+/* Desktop Padding (Big spacious look) */
 .intro, .intro-box, .content-section {
     background: #fff;
-    padding: 2rem;
+    padding: 2.5rem; /* Spacious padding for desktop */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
@@ -98,7 +98,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 }
 .github-btn:hover { background-color: #000; }
 
-/* Project/Software Cards */
+/* Project Cards */
 .project-list { display: grid; gap: 2rem; }
 .project-card {
     background: #fff;
@@ -113,10 +113,9 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     color: #c0392b; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.8rem; display: block;
 }
 
-/* Links inside cards */
-.links-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 10px; }
+.links-container { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 10px; }
 .link-badge {
-    font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center;
+    font-size: 0.9rem; padding: 6px 12px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center;
 }
 .link-badge.ebrains { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
 .link-badge.github { background-color: #f5f5f5; color: #333; border: 1px solid #ddd; }
@@ -129,7 +128,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .figure-container img { max-width: 100%; height: auto; border-radius: 4px; }
 .caption { display: block; margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic; text-align: justify; padding: 0 1rem; }
 
-/* Specific List Styles for Content (Not Sidebar) */
+/* Standard Lists inside content */
 .main-content ul { list-style: disc; margin-left: 20px; margin-bottom: 1.5rem; }
 .main-content ol { list-style: decimal; margin-left: 20px; margin-bottom: 1.5rem; }
 .main-content li { margin-bottom: 0.5rem; }
@@ -138,40 +137,51 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .mobile-menu-btn {
     display: none;
     position: fixed;
-    top: 15px;
-    left: 15px;
+    top: 10px;
+    left: 10px;
     background-color: #2c3e50;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 1.1rem;
     cursor: pointer;
     z-index: 2000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* --- 6. RESPONSIVE DESIGN --- */
+/* --- 6. RESPONSIVE DESIGN (Make it wider on phone) --- */
 @media (max-width: 768px) {
-    /* Show the button */
+    /* Show the menu button */
     .mobile-menu-btn { display: block; }
 
-    /* HIDE SIDEBAR OFF-SCREEN LEFT */
+    /* Hide Sidebar */
     .sidebar {
         transform: translateX(-100%);
         box-shadow: 2px 0 5px rgba(0,0,0,0.2);
     }
-
-    /* When class 'active' is added via JS, slide it back in */
     .sidebar.active {
         transform: translateX(0);
     }
 
-    /* Adjust main content to take full width */
+    /* Widen the Main Content Area */
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 1.5rem;
-        padding-top: 70px; /* Make space for the menu button */
+        padding: 1rem; /* Reduced from 3rem */
+        padding-top: 60px; /* Space for the menu button */
     }
+
+    /* Reduce padding inside cards to maximize space */
+    .intro, .intro-box, .content-section, .project-card {
+        padding: 1.2rem; /* Reduced from 2.5rem */
+    }
+
+    .page-title {
+        font-size: 1.6rem; /* Slightly smaller header to fit better */
+    }
+
+    /* Make link buttons slightly more compact on mobile */
+    .links-container { gap: 0.5rem; }
+    .link-badge { padding: 5px 8px; font-size: 0.85rem; }
 }
