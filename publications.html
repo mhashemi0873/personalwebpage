@@ -1,1324 +1,755 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage - free website template</title>
-  <meta name="keywords" content="Homepage, free download, website templates, CSS, HTML" />
-  <meta name="description" content="Homepage is a free website template from templatemo.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Meysam Hashemi</title>
+    <meta name="description" content="Academic Publications, Patents, and Research by Meysam Hashemi">
 
-  <link rel="stylesheet" href="templatemo_style.css" />
-  <link rel="stylesheet" href="css/coda-slider.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-  <script src="js/jquery-1.2.6.js"></script>
-  <script src="js/jquery.scrollTo-1.3.6.js"></script>
-  <script src="js/jquery.localscroll-1.2.5.js"></script>
-  <script src="js/jquery.serialScroll-1.2.1.js"></script>
-  <script src="js/coda-slider.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
+    <style>
+        /* --- 1. RESET & BASE STYLES --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. SIDEBAR (Navigation) --- */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .profile-header { margin-bottom: 2rem; }
+        .profile-header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .profile-header span { font-size: 0.9rem; color: #bdc3c7; }
+
+        .nav-links li { margin-bottom: 1rem; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: #bdc3c7;
+            font-size: 1.1rem;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+            color: #fff;
+            padding-left: 15px;
+        }
+        .nav-links a::before { content: "➤"; margin-right: 10px; font-size: 0.8rem; }
+
+        /* --- 3. MAIN CONTENT --- */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        /* --- 4. PUBLICATIONS SPECIFIC STYLES --- */
+        .page-header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .page-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* External Links Buttons */
+        .profile-links { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .btn-link {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid transparent;
+            font-size: 1rem;
+        }
+        .btn-google { background-color: #fff; border: 1px solid #ddd; color: #333; }
+        .btn-gate { background-color: #00ccbb; color: white; }
+        .btn-link:hover { transform: translateY(-2px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* Publication Categories */
+        .category-header {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 3rem 0 1.5rem 0;
+            font-weight: 700;
+            border-left: 5px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        /* Publication Card */
+        .pub-card {
+            background: #fff;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #ccc;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .pub-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        /* Status Colors */
+        .pub-card.review { border-left-color: #9b59b6; } /* Purple */
+        .pub-card.accepted { border-left-color: #2ecc71; } /* Green */
+        .pub-card.submitted { border-left-color: #f1c40f; } /* Yellow */
+        .pub-card.patent { border-left-color: #e67e22; } /* Orange */
+        .pub-card.abstract { border-left-color: #34495e; } /* Dark Grey */
+
+        .pub-number {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.1rem;
+            color: #e74c3c;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .pub-title {
+            color: #2980b9;
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            display: block;
+            line-height: 1.4;
+            /* FIX: Add padding to right so text doesn't hit the number */
+            padding-right: 3.5rem;
+        }
+
+        .pub-authors { font-size: 0.95rem; color: #333; margin-bottom: 0.5rem; line-height: 1.6; }
+
+        /* Highlighting your name */
+        .my-name { text-decoration: underline; font-weight: 600; color: #000; }
+
+        .pub-meta {
+            font-size: 0.9rem;
+            color: #555;
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+
+        .doi-link {
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        .doi-link a { color: #95a5a6; border-bottom: 1px dotted #95a5a6; }
+        .doi-link a:hover { color: #2c3e50; border-bottom: 1px solid #2c3e50; }
+
+        /* Placeholder for images/diagrams */
+        .diagram-placeholder {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px dashed #ccc;
+            background-color: #f9f9f9;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* --- 5. RESPONSIVE --- */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <div id="slider">
-    <div id="templatemo_sidebar">
-      <div id="templatemo_header">
-        <a href="index.html">
-          <h1 style="color: white; font-size: 5em;"><img src="" alt="Home" /></h1>
-        </a>
-      </div>
-
-      <div class="contentcontainer med left" style="margin-left: -30px;">
-        <br /><br />
-        <a href="publications.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Publications</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="highlights.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Highlights</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="glossary.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Glossary</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="projects.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Projects</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="software.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Code</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="cv.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>CV</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="contacts.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Contact</strong></font>
-          </font>
-        </a>
-      </div>
-    </div>
-
-    <div id="templatemo_main">
-      <div id="content">
-        <div class="scrollContainer">
-          <br /><br /><br />
-
-          <div class="panel" id="home">
-
-
-                        <div class="contentcontainer med right" style="margin-right: -500px;">
-                          <div class="contentcontainer med left" style="margin-left: 10px;">
-                            <div style="color: black; font-size: 1.5em; line-height: 1.5; margin-left: 10px; margin-right: 150px; text-align: justify;">
-                              <p>
-
-
-
-
-
-
-                  <h1 style="color:#229922;">
-                    <font size="6" color="black">&#9758;&nbsp;</font>
-                    <a href="https://scholar.google.co.uk/citations?user=Hma4XDMAAAAJ/" rel="nofollow">
-                      <font size="5.5" color="white"><u> Publication statistics in Google Scholar</u></font>
-<br />
-                      <font size="6" color="black">&#9758;&nbsp;</font>
-                      <a href="https://www.researchgate.net/profile/Meysam_Hashemi" rel="nofollow">
-                        <font size="5.5" color="white"><u> Research Gate</u></font>
-                    </a>
-                  </h1>
-
-
-
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white" ><font size="5" color="grey"> <b>Review articles:</b> </a></font> </a></font> </em> <p>
-
 
-
-  <li style="list-style: none;">
-    <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">3.</span>
-    <span style="text-decoration: underline;">Hashemi M*&#8224;</span>, Depannemaecker D&#8224;, Saggio M&#8224;, Triebkorn P,
-    Rabuffo G, Fousek J, Ziaeemehr A, Sip V, Athanasiadis A, Breyton M, Woodman M,
-    Wang H, Petkoski S, Sorrentino P, Jirsa V.
-    <strong style="color: blue;">
-      "Principles and Operation of Virtual Brain Twins".
-    </strong>
-    <span style="color: yellow; font-style: italic;">
-      IEEE Reviews in Biomedical Engineering.
-    </span>
-    2025 Apr 21.
-    <span style="color: white;">
-      DOI:
-      <a href="https://doi.org/10.1109/RBME.2025.3562951" style="color: white;">
-        10.1109/RBME.2025.3562951
-      </a>.
-    </span>
-  </li>
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  Wang HE, Triebkorn P, Breyton M, Dollomaja B, Lemarechal JD, Petkoski S,
-  Sorrentino P, Depannemaecker D,
-  <span style="text-decoration: underline;">Hashemi M</span>, Jirsa V.
-  <strong style="color: blue;">
-    "Virtual brain twins: from basic neuroscience to clinical use".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    National Science Review.
-  </span>
-  2024 Feb 28;11(5):nwae079.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1093/nsr/nwae079" style="color: white;">
-      10.1093/nsr/nwae079
-    </a>.
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  Jirsa V, Wang H, Triebkorn P,
-  <span style="text-decoration: underline;">Hashemi M</span>, Jha J,
-  Gonzalez-Martinez J, Guye M, Makhalova J, Bartolomei F.
-  <strong style="color: blue;">
-    "Personalised virtual brain models in epilepsy".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    The Lancet Neurology.
-  </span>
-  2023 May;22(5):443–454.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/S1474-4422(23)00008-X" style="color: white;">
-      10.1016/S1474-4422(23)00008-X
-    </a>.
-  </span>
-</li>
-
-
-<br/>
-<br/>
-
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white" ><font size="5" color="grey"> <b>Accepted peer-reviewed:</b> </a></font> </a></font> </em> <p>
-
-
-
-
-  <li style="list-style: none;">
-    <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">30.</span>
-    Vattikonda AN&#8224;,
-    <span style="text-decoration: underline;">Hashemi M&#8224;*</span>,
-    Woodman MM, Lemarechal JD, Daini D, Bartolomei F, Jirsa V&#8224;.
-    <strong style="color: blue;">
-      "High-resolution Bayesian Virtual Epileptic Patient using neural field models".
-    </strong>
-    <span style="color: yellow; font-style: italic;">
-      Network Neuroscience (accepted).
-    </span>
-  </li>
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">29.</span>
-  Esmaeili A, Demolliens M, Viersen M, Ziaeemehr A, Isbaine F, Huguet P, Zaal F,
-  Jirsa V&#8224;, Boussaoud D&#8224;,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>
-  <strong style="color: blue;">
-    "Probabilistic inference of social presence across brain scales reveals enhanced synaptic efficacy".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Communication Biology.
-  </span>
-  2025 Nov 19;8(1):1608.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1038/s42003-025-08971-3" style="color: white;">
-      10.1038/s42003-025-08971-3
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">28.</span>
-  Ziaeemehr A, Woodman M, Domide L, Petkoski S,
-  Jirsa V&#8224;,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>
-  <strong style="color: blue;">
-    "Virtual Brain Inference (VBI), a flexible and integrative toolkit for efficient probabilistic inference on whole-brain models".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    eLife.
-  </span>
-  2025;14:RP106194.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.7554/eLife.106194.4" style="color: white;">
-      10.7554/eLife.106194.4
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">27.</span>
-  Baldy N, Woodman M,
-  Jirsa V&#8224;,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>
-  <strong style="color: blue;">
-    "Dynamic Causal Modeling in Probabilistic Programming Languages".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Journal of the Royal Society Interface.
-  </span>
-  2025 Jun;22(227):20240880.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1098/rsif.2024.0880" style="color: white;">
-      10.1098/rsif.2024.0880
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">25.</span>
-  Angiolelli M, Depannemaecker D, Agouram H, Régis J, Carron R, Woodman M,
-  Chiodo L, Triebkorn P, Ziaeemehr A,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Eusebio A, Jirsa V, Sorrentino P.
-  <strong style="color: blue;">
-    "The Virtual Parkinsonian Patient".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    NPJ Systems Biology and Applications.
-  </span>
-  2025 Apr 26;11(1):40.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1038/s41540-025-00516-y" style="color: white;">
-      10.1038/s41540-025-00516-y
-    </a>
-  </span>
-</li>
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">24.</span>
-  Mazzara C, Ziaeemehr A, Troisi Lopez E, Cipriano L, Angiolelli M, Sparaco M,
-  Quarantelli M, Granata C, Sorrentino G,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Jirsa V, Sorrentino P.
-  <strong style="color: blue;">
-    "Mapping Brain Lesions to Conduction Delays: The Next Step for Personalized Brain Models in Multiple Sclerosis".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Human Brain Mapping.
-  </span>
-  2025 May;46(7):e70219.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1002/hbm.70219" style="color: white;">
-      10.1002/hbm.70219
-    </a>
-  </span>
-</li>
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">23.</span>
-  Dehghani Soufi M, Shirkoohi R, Sanaat Z, Torkamannia A,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Jahandar-Lashaki S, Yousefpour Marzbali M, Vaez Y, Ferdousi R.
-  <strong style="color: blue;">
-    "PLSKB: An Interactive Knowledge Base to Support Diagnosis, Treatment, and Screening of Lynch Syndrome on the Basis of Precision Oncology".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    JCO Clinical Cancer Informatics.
-  </span>
-  2025 Mar;9:e2400246.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1200/CCI-24-00246" style="color: white;">
-      10.1200/CCI-24-00246
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">22.</span>
-  Rabuffo G, Lokossou HA, Li Z, Ziaee-Mehr A,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Quilichini PP, Ghestem A, Arab O, Esclapez M, Verma P, Raj A, Gozzi A,
-  Sorrentino P, Chuang KH, Perles-Barbacaru TA, Viola A, Jirsa V, Bernard C.
-  <strong style="color: blue;">
-    "Mapping global brain reconfigurations following local targeted manipulations".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Proc. Natl. Acad. Sci. U.S.A.
-  </span>
-  2025 Apr 22;122(16):e2405706122.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1073/pnas.2405706122" style="color: white;">
-      10.1073/pnas.2405706122
-    </a>
-  </span>
-  <span style="color: white;">
-    IF: 9.4, Citations: 4.
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">21.</span>
-  Baldy N, Breyton M, Woodman MM,
-  Jirsa VK&#8224;,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>
-  <strong style="color: blue;">
-    "Inference on the macroscopic dynamics of spiking neurons".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Neural Computation.
-  </span>
-  2024 Sep 17;36(10):2030–2072.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1162/neco_a_01701" style="color: white;">
-      10.1162/neco_a_01701
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">20.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Ziaeemehr A, Woodman MM, Fousek J, Petkoski S, Jirsa V.
-  <strong style="color: blue;">
-    "Simulation-based inference on virtual brain models of disorders".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Machine Learning: Science and Technology.
-  </span>
-  2024 Jul 19;5(3):035019.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1088/2632-2153/ad6230" style="color: white;">
-      10.1088/2632-2153/ad6230
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">19.</span>
-  Sorrentino P, Pathak A, Ziaeemehr A, Troisi Lopez E, Cipriano L, Romano A,
-  Sparaco M, Quarantelli M, Banerjee A, Sorrentino G,
-  Jirsa&#8224; V,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>
-  <strong style="color: blue;">
-    "The virtual multiple sclerosis patient".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    iScience.
-  </span>
-  2024 May 24;27(7):110101.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/j.isci.2024.110101" style="color: white;">
-      10.1016/j.isci.2024.110101
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">18.</span>
-  Penas DR&#8224;,
-  <span style="text-decoration: underline;">Hashemi M&#8224;</span>,
-  Jirsa V, Banga JR.
-  <strong style="color: blue;">
-    "Parameter estimation in a whole-brain network model of epilepsy: Comparison of parallel global optimization solvers".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    PLOS Computational Biology.
-  </span>
-  2024 Jul 11;20(7):e1011642.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1371/journal.pcbi.1011642" style="color: white;">
-      10.1371/journal.pcbi.1011642
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">17.</span>
-  Lemaréchal JD, Triebkorn P, Vattikonda AN,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Woodman M, Guye M, Bartolomei F, Wang HE, Jirsa V.
-  <strong style="color: blue;">
-    "Effects of the spatial resolution of the Virtual Epileptic Patient on the identification of epileptogenic networks".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Imaging Neuroscience.
-  </span>
-  2024 May 8;2:imag-2-00153.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1162/imag_a_00153" style="color: white;">
-      10.1162/imag_a_00153
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">16.</span>
-  Baldy N, Simon N, Jirsa V,
-  <span style="text-decoration: underline;">Hashemi M&#8224;*</span>.
-  <strong style="color: blue;">
-    "Hierarchical Bayesian pharmacometrics analysis of Baclofen for alcohol use disorder".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Machine Learning: Science and Technology.
-  </span>
-  2023 Sep 14;4(3):035048.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1088/2632-2153/acf6aa" style="color: white;">
-      10.1088/2632-2153/acf6aa
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">15.</span>
-  Lavanga M, Stumme J, Yalcinkaya BH, Fousek J, Jockwitz C, Sheheitli H,
-  Bittner N,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Petkoski S, Caspers S, Jirsa V.
-  <strong style="color: blue;">
-    "The virtual aging brain: Causal inference supports interhemispheric dedifferentiation in healthy aging".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    NeuroImage.
-  </span>
-  2023 Dec 1;283:120403.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/j.neuroimage.2023.120403" style="color: white;">
-      10.1016/j.neuroimage.2023.120403
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">14.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Vattikonda AN, Jha J, Sip V,
-  Woodman M, Bartolomei F, Jirsa V.
-  <strong style="color: blue;">
-    "Amortized Bayesian inference on generative dynamical network models of epilepsy using deep neural density estimators".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Neural Networks.
-  </span>
-  2023 Jun;163:178–194.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/j.neunet.2023.03.040" style="color: white;">
-      10.1016/j.neunet.2023.03.040
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">13.</span>
-  Wang H, Woodman M, Triebkorn P, Lemarechal JD, Jha J, Dollomaja B,
-  Vattikonda AN, Sip V, Medina Villalon S,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Guye M, Makhalova J, Bartolomei F, Jirsa V.
-  <strong style="color: blue;">
-    "Delineating epileptogenic networks using brain imaging data and personalized modeling in drug-resistant epilepsy".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Science Translational Medicine.
-  </span>
-  2023 Jan 25;15(680):eabp8982.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1126/scitranslmed.abp8982" style="color: white;">
-      10.1126/scitranslmed.abp8982
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">12.</span>
-  Sip V,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Dickscheid T, Amunts K, Petkoski S, Jirsa V.
-  <strong style="color: blue;">
-    "Characterization of regional differences in resting-state fMRI with a data-driven network model of brain dynamics".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Science Advances.
-  </span>
-  2023 Mar 15;9(11):eabq7547.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1126/sciadv.abq7547" style="color: white;">
-      10.1126/sciadv.abq7547
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">11.</span>
-  Jha J,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Vattikonda AN, Wang H, Jirsa V.
-  <strong style="color: blue;">
-    "Fully Bayesian estimation of virtual brain parameters with self-tuning Hamiltonian Monte Carlo".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Machine Learning: Science and Technology.
-  </span>
-  2022 Sep 26;3(3):035016.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1088/2632-2153/ac9037" style="color: white;">
-      10.1088/2632-2153/ac9037
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">10.</span>
-  Schirner M, Domide L, Perdikis D, Triebkorn P, Stefanovski L, Pai R, Prodan P,
-  Valean B, Palmer J, Langford C, Blickensdörfer A, van der Vlag M, Diaz-Pier S,
-  Peyser A, Klijn W, Pleiter D, Nahm A, Schmid O, Woodman M, Zehl L, Fousek J,
-  Petkoski S, Kusch L,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Marinazzo D, Mangin JF, Flöel A, Akintoye S, Stahl BC, Cepic M, Johnson E,
-  Deco G, McIntosh AR, Hilgetag CC, Morgan M, Schuller B, Upton A, McMurtrie C,
-  Dickscheid T, Bjaalie JG, Amunts K, Mersmann J, Jirsa V, Ritter P.
-  <strong style="color: blue;">
-    "Brain simulation as a cloud service: The Virtual Brain on EBRAINS".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    NeuroImage.
-  </span>
-  2022 May 1;251:118973.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/j.neuroimage.2022.118973" style="color: white;">
-      10.1016/j.neuroimage.2022.118973
-    </a>
-  </span>
-</li>
-
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">9.</span>
-  Vattikonda AN,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Sip V, Woodman MM, Bartolomei F, Jirsa V.
-  <strong style="color: blue;">
-    "Identifying spatio-temporal seizure propagation patterns in epilepsy using Bayesian inference".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Communications Biology.
-  </span>
-  2021 Nov 1;4(1):1244.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1038/s42003-021-02751-5" style="color: white;">
-      10.1038/s42003-021-02751-5
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">8.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Vattikonda AN, Sip V,
-  Diaz-Pier S, Peyser A, Wang H, Guye M, Bartolomei F, Woodman MM, Jirsa V.
-  <strong style="color: blue;">
-    "On the influence of prior information evaluated by fully Bayesian criteria in a personalized whole-brain model of epilepsy spread".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    PLoS Computational Biology.
-  </span>
-  2021 Jul 14;17(7):e1009129.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1371/journal.pcbi.1009129" style="color: white;">
-      10.1371/journal.pcbi.1009129
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">7.</span>
-  Sip V,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Vattikonda AN, Woodman MM, Wang H, Scholly J, Medina Villalon S,
-  Guye M, Bartolomei F, Jirsa V.
-  <strong style="color: blue;">
-    "Data-driven method to infer the seizure propagation patterns in an epileptic brain from intracranial electroencephalography".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    PLoS Computational Biology.
-  </span>
-  2021 Feb 17;17(2):e1008689.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1371/journal.pcbi.1008689" style="color: white;">
-      10.1371/journal.pcbi.1008689
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">6.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Vattikonda AN, Sip V,
-  Guye M, Bartolomei F, Woodman MM, Jirsa V.
-  <strong style="color: blue;">
-    "The Bayesian Virtual Epileptic Patient: A probabilistic framework designed to infer the spatial map of epileptogenicity in a personalized large-scale brain model of epilepsy spread".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    NeuroImage.
-  </span>
-  2020 Aug 15;217:116839.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1016/j.neuroimage.2020.116839" style="color: white;">
-      10.1016/j.neuroimage.2020.116839
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">5.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, Buhry L, Sleigh J.
-  <strong style="color: blue;">
-    "Optimal model parameter estimation from EEG power spectrum features observed during general anesthesia".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Neuroinformatics.
-  </span>
-  2018 Apr;16(2):231–251.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1007/s12021-018-9369-x" style="color: white;">
-      10.1007/s12021-018-9369-x
-    </a>.
-  </span>
-  <a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHBS2018.pdf"
-     style="color: blue; margin-left: 6px;">
-    (View PDF)
-  </a>
-</li>
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">4.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, Hight D, Sleigh J.
-  <strong style="color: blue;">
-    "Anesthetic action on the transmission delay between cortex and thalamus explains the beta-buzz observed under propofol anesthesia".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    PLoS One.
-  </span>
-  2017 Jun 16;12(6):e0179286.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1371/journal.pone.0179286" style="color: white;">
-      10.1371/journal.pone.0179286
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">3.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, Sleigh J.
-  <strong style="color: blue;">
-    "How the cortico-thalamic feedback affects the EEG power spectrum over frontal and occipital regions during propofol-induced sedation".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Journal of Computational Neuroscience.
-  </span>
-  2015 Oct;39(2):155–179.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1007/s10827-015-0569-1" style="color: white;">
-      10.1007/s10827-015-0569-1
-    </a>.
-  </span>
-  <a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHS_2015.pdf"
-     style="color: blue; margin-left: 6px;">
-    (View PDF)
-  </a>
-</li>
-
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, Sleigh J.
-  <strong style="color: blue;">
-    "Anesthetic action on extra-synaptic receptors: effects in neural population models of EEG activity".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Frontiers in Systems Neuroscience.
-  </span>
-  2014 Dec 10;8:232.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.3389/fnsys.2014.00232" style="color: white;">
-      10.3389/fnsys.2014.00232
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  <span style="text-decoration: underline;">Hashemi M</span>, Valizadeh A, Azizi Y.
-  <strong style="color: blue;">
-    "Effect of duration of synaptic activity on spike rate of a Hodgkin-Huxley neuron with delayed feedback".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Physical Review E—Statistical, Nonlinear, and Soft Matter Physics.
-  </span>
-  2012 Feb;85(2 Pt 1):021917.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1103/PhysRevE.85.021917" style="color: white;">
-      10.1103/PhysRevE.85.021917
-    </a>.
-  </span>
-  <a href="https://mhashemi0873.github.io/personalwebpage/uploads/HVA.pdf"
-     style="color: blue; margin-left: 6px;">
-    (View PDF)
-  </a>
-</li>
-
-
-<br/>
-<br/>
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Submitted original articles:</b> </a></font> </a></font> </em> <p>
-
-
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">4.</span>
-  Athanasiadis A, Woodman M,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Triebkorn P, Petkoski S, Jirsa V.
-  <strong style="color: blue;">
-    "A deformable attractor manifold organizes human resting-state brain dynamics".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    bioRxiv.
-  </span>
-  2025.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.64898/2025.12.02.691788" style="color: white;">
-      10.64898/2025.12.02.691788
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">3.</span>
-  Breyton M, Sip V, Woodman M,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Petkoski S, Jirsa V.
-  <strong style="color: blue;">
-    "Data-driven mean-field within whole-brain models".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    arXiv.
-  </span>
-  2025.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.48550/arXiv.2509.02799" style="color: white;">
-      10.48550/arXiv.2509.02799
-    </a>
-  </span>
-</li>
-
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  Cafaro G, Bernard C,
-  <span style="text-decoration: underline;">Hashemi M</span>,
-  Depannemaecker D.
-  <strong style="color: blue;">
-    "Degeneracy in neuronal bifurcation landscapes: equivalent bifurcation sequences across distinct parameter sets".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    bioRxiv.
-  </span>
-  2025.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1101/2025.08.04.668451" style="color: white;">
-      10.1101/2025.08.04.668451
-    </a>
-  </span>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  Yalçınkaya BH, Ziaeemehr A, Fousek J,
-  <span style="text-decoration: underline;">Hashemi M</span>, Lavanga M, Solodkin A,
-  McIntosh AR, Jirsa VK, Petkoski S.
-  <strong style="color: blue;">
-    "Personalized virtual brains of Alzheimer’s Disease link dynamical biomarkers of fMRI with increased local excitability".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    medRxiv.
-  </span>
-  2023.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1101/2023.01.11.23284438" style="color: white;">
-      10.1101/2023.01.11.23284438
-    </a>.
-  </span>
-</li>
-
-
-
-<br/>
-<br/>
-
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Editorial:</b> </a></font> </a></font> </em> <p>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  Kim CE, Sora AN,
-  <span style="text-decoration: underline;">Hashemi M</span>, and Kang J.
-  <strong style="color: blue;">
-    "Bridging the Gap Between Neuroscience and Artificial Intelligence".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Frontiers in Computational Neuroscience, 2023.
-  </span>
-  <a href="https://www.frontiersin.org/research-topics/36632/bridging-the-gap-between-neuroscience-and-artificial-intelligence/magazine"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-<br/>
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Book chapters:</b> </a></font> </a></font> </em> <p>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  Hutt A,
-  <span style="text-decoration: underline;">Hashemi M</span>, and Graben P.
-  <strong style="color: blue;">
-    "How to render Neural Fields more realistic".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Book chapter in: B. Bhattacharya and F. N. Chowdhury (Eds.), Validating Neuro-Computational Models of Neurological and Psychiatric Disorders</em>, Springer Series in Computational Neuroscience.
-  </span>
-  2015; pp. 141–159.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1007/978-3-319-20037-8_6" style="color: white;">
-      10.1007/978-3-319-20037-8_6
-    </a>.
-  </span>
-  <a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHG_Neuralfields.pdf"
-     style="color: blue; margin-left: 6px;">
-    (View PDF)
-  </a>
-</li>
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  <span style="text-decoration: underline;">Hashemi M</span>, and Hutt A.
-  <strong style="color: blue;">
-    "A thalamocortical model to explain EEG during anaesthesia".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Book chapter in: A. Pelster and G. Wunner (Eds.), Self-Organization in Complex Systems: The Past, Present, and Future of Synergetics</em>, Understanding Complex Systems, Springer.
-  </span>
-  2015; pp. 305–312.
-  <span style="color: white;">
-    DOI:
-    <a href="https://doi.org/10.1007/978-3-319-27635-9_20" style="color: white;">
-      10.1007/978-3-319-27635-9_20
-    </a>.
-  </span>
-  <a href="https://mhashemi0873.github.io/personalwebpage/uploads/HWK.pdf"
-     style="color: blue; margin-left: 6px;">
-    (View PDF)
-  </a>
-</li>
-
-<br/>
-<br/>
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Patents:</b> </a></font> </a></font> </em> <p>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">4.</span>
-  Hashemi M, Sip V, Vattikonda AN, Woodman M,
-  Jirsa V.
-  <strong style="color: blue;">
-    "A Method for Inferring Epileptogenicity of a Brain Region".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    WO/2021/197612, PCT/EP2020/059511.
-  </span>
-  <a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2021197612&_fid=US399237357"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">3.</span>
-  Hashemi M, Arbabyazd L, Williamson A,
-  Jirsa V.
-  <strong style="color: blue;">
-    "Method for Inferring a Change in a Whole-brain Network and System with Stimulation".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    WO/2024/218403, PCT/EP2024/060977.
-  </span>
-  <a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2024218403&_cid=P22-MI37H0-61018-1"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  Hashemi M, Sorrentino P, Jirsa V.
-  <strong style="color: blue;">
-    "Computer-Implemented Method for Inferring a Conduction Velocity of a Subject's Brain".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    WO/2025/114407, PCT/EP2024/083847.
-  </span>
-  <a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2025114407&_cid=P22-MI37H0-61018-1"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  <span style="text-decoration: underline;">Hashemi M</span>, Jha J, Jirsa V.
-  <strong style="color: blue;">
-    "Bayesian Inversion of Whole-Brain Model of Epilepsy based on Real SEEG Recording".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Submitted.
-  </span>
-  <span style="color: white;">
-    Réf/AMU: 21D051.
-  </span>
-</li>
-
-
-
-<br/>
-<br/>
-
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Published abstracts:</b> </a></font> </a></font> </em> <p>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">7.</span>
-  Mazzara C, Angiolelli M, Jirsa V, Sorrentino P, Ziaeemehr A,
-  <span style="text-decoration: underline;">Hashemi M*</span>.
-  <strong style="color: blue;">
-    "Mapping brain lesions to conduction delays: the next step for personalized brain models in Multiple Sclerosis".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    CNS 2024.
-  </span>
-  <a href="https://link.springer.com/article/10.1007/s10827-024-00889-9"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">6.</span>
-  Sip V, Jirsa V,
-  <span style="text-decoration: underline;">Hashemi M</span>, Vattikonda AN, Jha J.
-  <strong style="color: blue;">
-    "Model inversion techniques for seizure spread in individual brain networks".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    BMC Neuroscience, CNS 2021.
-  </span>
-  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8687879/"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">5.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Vattikonda AN, Sip V, Guye M, Bartolomei F, Woodman MM, and Jirsa V.
-  <strong style="color: blue;">
-    "Inferring the dynamic of personalized large-scale brain network models using Bayesian framework".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    BMC Neuroscience, CNS 2019.
-  </span>
-  <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/s12868-019-0538-0"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">4.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, and Sleigh J.
-  <strong style="color: blue;">
-    "Fitting a thalamo-cortical model to EEG power spectrum using evolutionary algorithm".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    Antibes-Juan les Pins, France, ICMNS 2015.
-  </span>
-  <a href="https://inria.hal.science/hal-01184206/preview/ICMNS_HHS.pdf"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">3.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, and Sleigh J.
-  <strong style="color: blue;">
-    "Thalamo-cortical mechanisms of the observed specific changes in frontal and occipital EEG rhythms during the propofol-induced sedation".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    BMC Neuroscience CNS, 2015.
-  </span>
-  <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-16-S1-P232"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">2.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, Hutt A, Sleigh J, and Graben P.
-  <strong style="color: blue;">
-    "Reproduction of EEG power spectrum over frontal region during the propofol-induced general anesthesia".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    BMC Neuroscience, CNS 2014.
-  </span>
-  <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-15-S1-P211"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-<br/>
-
-<li style="list-style: none;">
-  <span class="ref-number" style="font-size: 1.1em; font-weight: 600; color: red; margin-right: 8px;">1.</span>
-  <span style="text-decoration: underline;">Hashemi M*</span>, and Hutt A.
-  <strong style="color: blue;">
-    "A thalamocortical model to explain EEG during anesthesia".
-  </strong>
-  <span style="color: yellow; font-style: italic;">
-    BMC Neuroscience, CNS 2013.
-  </span>
-  <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-14-S1-P177"
-     style="color: blue; margin-left: 6px;">
-    (See here)
-  </a>
-</li>
-
-
-
-<br/>
-<br/>
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>PhD Thesis (thèses doctorat):</b> </a></font> </a></font> </em> <p>
-
-
-
-
-
-<p><font size="3" color="white">&#9831; <font size="3" color="black">  <b>M. Hashemi.</b> "<font color=#000080><b>Analytical and numerical studies of thalamo-cortical neural population models during general anesthesia</b>" <i>(Modélisation mathématique et simulation numérique de populations neuronales thalamo-corticales dans le contexte de l'anesthésie générale).  </i> <font color="DarkRed"><b>Computer Science.</b> <font size="3" color="black" >  Université de Lorraine, 2016. <a target="_blank" href="https://theses.hal.science/tel-01754610"><font color="blue">(View Pdf)</a></font>
-
-
-
-<br/>
-<br/>
-
-<p><font size="3">  <font size="5" style="font-family:courier" color="white"><font size="5" color="grey"> <b>Master Thesis:</b> </a></font> </a></font> </em> <p>
-
-<p><font size="3" color="white">&#9831; <font size="3" color="black">  <b>M. Hashemi.</b> "<font color=#000080><b>Effect of the duration of the synaptic activity on a delayed recurrent neuronal loop</b>" <i>(اثر ثابت زمانی فعالیت سیناپسی بر یک حلقه نورونی با بازخورد تاخیردار). </i> <font color="DarkRed"><b>Physics, Soft Condensed Matter.</b> <font size="3" color="black" > IASBS, 2012. <a target="_blank" href="uploads/MasterThesis_MeysamHASHEMI.pdf"><font color="blue">(View Pdf)</a></font>
-
-
-
-</div> <!-- end of home -->
-
-</div> <!-- end of content -->
-
-<div id="templatemo_footer">
-
-
-
-</div> <!-- end of templatemo_footer -->
-
-</div> <!-- end of main -->
-
-</div>
-</div>
-</div>
-
+    <nav class="sidebar">
+        <div class="profile-header">
+            <h1>M. Hashemi</h1>
+            <span>Computational Neuroscience</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="highlights.html">Highlights</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="software.html">Code</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="page-header">
+            <h2 class="page-title">Publications</h2>
+
+            <div class="profile-links">
+                <a href="https://scholar.google.co.uk/citations?user=Hma4XDMAAAAJ/" target="_blank" class="btn-link btn-google">
+                    🎓 Google Scholar Statistics
+                </a>
+                <a href="https://www.researchgate.net/profile/Meysam_Hashemi" target="_blank" class="btn-link btn-gate">
+                    RG Research Gate
+                </a>
+            </div>
+        </div>
+
+        <h3 class="category-header">Review Articles</h3>
+
+
+
+        <div class="pub-card review">
+            <span class="pub-number">#3</span>
+            <span class="pub-title">Principles and Operation of Virtual Brain Twins</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*&#8224;</span>, Depannemaecker D&#8224;, Saggio M&#8224;, Triebkorn P, Rabuffo G, Fousek J, Ziaeemehr A, Sip V, Athanasiadis A, Breyton M, Woodman M, Wang H, Petkoski S, Sorrentino P, Jirsa V.</div>
+            <div class="pub-meta">
+                IEEE Reviews in Biomedical Engineering. 2025 Apr 21.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1109/RBME.2025.3562951">10.1109/RBME.2025.3562951</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card review">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">Virtual brain twins: from basic neuroscience to clinical use</span>
+            <div class="pub-authors">Wang HE, Triebkorn P, Breyton M, Dollomaja B, Lemarechal JD, Petkoski S, Sorrentino P, Depannemaecker D, <span class="my-name">Hashemi M</span>, Jirsa V.</div>
+            <div class="pub-meta">
+                National Science Review. 2024 Feb 28;11(5):nwae079.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1093/nsr/nwae079">10.1093/nsr/nwae079</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card review">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">Personalised virtual brain models in epilepsy</span>
+            <div class="pub-authors">Jirsa V, Wang H, Triebkorn P, <span class="my-name">Hashemi M</span>, Jha J, Gonzalez-Martinez J, Guye M, Makhalova J, Bartolomei F.</div>
+            <div class="pub-meta">
+                The Lancet Neurology. 2023 May;22(5):443–454.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/S1474-4422(23)00008-X">10.1016/S1474-4422(23)00008-X</a></span>
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Accepted Peer-Reviewed Articles</h3>
+
+
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#30</span>
+            <span class="pub-title">High-resolution Bayesian Virtual Epileptic Patient using neural field models</span>
+            <div class="pub-authors">Vattikonda AN&#8224;, <span class="my-name">Hashemi M&#8224;*</span>, Woodman MM, Lemarechal JD, Daini D, Bartolomei F, Jirsa V&#8224;.</div>
+            <div class="pub-meta">Network Neuroscience (accepted).</div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#29</span>
+            <span class="pub-title">Probabilistic inference of social presence across brain scales reveals enhanced synaptic efficacy</span>
+            <div class="pub-authors">Esmaeili A, Demolliens M, Viersen M, Ziaeemehr A, Isbaine F, Huguet P, Zaal F, Jirsa V&#8224;, Boussaoud D&#8224;, <span class="my-name">Hashemi M&#8224;*</span></div>
+            <div class="pub-meta">
+                Communication Biology. 2025 Nov 19;8(1):1608.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1038/s42003-025-08971-3">10.1038/s42003-025-08971-3</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#28</span>
+            <span class="pub-title">Virtual Brain Inference (VBI), a flexible and integrative toolkit for efficient probabilistic inference on whole-brain models</span>
+            <div class="pub-authors">Ziaeemehr A, Woodman M, Domide L, Petkoski S, Jirsa V&#8224;, <span class="my-name">Hashemi M&#8224;*</span></div>
+            <div class="pub-meta">
+                eLife. 2025;14:RP106194.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.7554/eLife.106194.4">10.7554/eLife.106194.4</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#27</span>
+            <span class="pub-title">Dynamic Causal Modeling in Probabilistic Programming Languages</span>
+            <div class="pub-authors">Baldy N, Woodman M, Jirsa V&#8224;, <span class="my-name">Hashemi M&#8224;*</span></div>
+            <div class="pub-meta">
+                Journal of the Royal Society Interface. 2025 Jun;22(227):20240880.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1098/rsif.2024.0880">10.1098/rsif.2024.0880</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#25</span>
+            <span class="pub-title">The Virtual Parkinsonian Patient</span>
+            <div class="pub-authors">Angiolelli M, Depannemaecker D, Agouram H, Régis J, Carron R, Woodman M, Chiodo L, Triebkorn P, Ziaeemehr A, <span class="my-name">Hashemi M</span>, Eusebio A, Jirsa V, Sorrentino P.</div>
+            <div class="pub-meta">
+                NPJ Systems Biology and Applications. 2025 Apr 26;11(1):40.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1038/s41540-025-00516-y">10.1038/s41540-025-00516-y</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#24</span>
+            <span class="pub-title">Mapping Brain Lesions to Conduction Delays: The Next Step for Personalized Brain Models in Multiple Sclerosis</span>
+            <div class="pub-authors">Mazzara C, Ziaeemehr A, Troisi Lopez E, Cipriano L, Angiolelli M, Sparaco M, Quarantelli M, Granata C, Sorrentino G, <span class="my-name">Hashemi M</span>, Jirsa V, Sorrentino P.</div>
+            <div class="pub-meta">
+                Human Brain Mapping. 2025 May;46(7):e70219.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1002/hbm.70219">10.1002/hbm.70219</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#23</span>
+            <span class="pub-title">PLSKB: An Interactive Knowledge Base to Support Diagnosis, Treatment, and Screening of Lynch Syndrome on the Basis of Precision Oncology</span>
+            <div class="pub-authors">Dehghani Soufi M, Shirkoohi R, Sanaat Z, Torkamannia A, <span class="my-name">Hashemi M</span>, Jahandar-Lashaki S, Yousefpour Marzbali M, Vaez Y, Ferdousi R.</div>
+            <div class="pub-meta">
+                JCO Clinical Cancer Informatics. 2025 Mar;9:e2400246.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1200/CCI-24-00246">10.1200/CCI-24-00246</a></span>
+            </div>
+        </div>
+
+
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#22</span>
+            <span class="pub-title">Mapping global brain reconfigurations following local targeted manipulations</span>
+            <div class="pub-authors">Rabuffo G, Lokossou HA, Li Z, Ziaee-Mehr A, <span class="my-name">Hashemi M</span>, Quilichini PP, Ghestem A, Arab O, Esclapez M, Verma P, Raj A, Gozzi A, Sorrentino P, Chuang KH, Perles-Barbacaru TA, Viola A, Jirsa V, Bernard C.</div>
+            <div class="pub-meta">
+                Proc. Natl. Acad. Sci. U.S.A. 2025 Apr 22;122(16):e2405706122.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1073/pnas.2405706122">10.1073/pnas.2405706122</a></span>
+                (IF: 9.4, Citations: 4)
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#21</span>
+            <span class="pub-title">Inference on the macroscopic dynamics of spiking neurons</span>
+            <div class="pub-authors">Baldy N, Breyton M, Woodman MM, Jirsa VK&#8224;, <span class="my-name">Hashemi M&#8224;*</span></div>
+            <div class="pub-meta">
+                Neural Computation. 2024 Sep 17;36(10):2030–2072.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1162/neco_a_01701">10.1162/neco_a_01701</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#20</span>
+            <span class="pub-title">Simulation-based inference on virtual brain models of disorders</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Ziaeemehr A, Woodman MM, Fousek J, Petkoski S, Jirsa V.</div>
+            <div class="pub-meta">
+                Machine Learning: Science and Technology. 2024 Jul 19;5(3):035019.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1088/2632-2153/ad6230">10.1088/2632-2153/ad6230</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#19</span>
+            <span class="pub-title">The virtual multiple sclerosis patient</span>
+            <div class="pub-authors">Sorrentino P, Pathak A, Ziaeemehr A, Troisi Lopez E, Cipriano L, Romano A, Sparaco M, Quarantelli M, Banerjee A, Sorrentino G, Jirsa&#8224; V, <span class="my-name">Hashemi M&#8224;*</span></div>
+            <div class="pub-meta">
+                iScience. 2024 May 24;27(7):110101.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/j.isci.2024.110101">10.1016/j.isci.2024.110101</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#18</span>
+            <span class="pub-title">Parameter estimation in a whole-brain network model of epilepsy: Comparison of parallel global optimization solvers</span>
+            <div class="pub-authors">Penas DR&#8224;, <span class="my-name">Hashemi M&#8224;</span>, Jirsa V, Banga JR.</div>
+            <div class="pub-meta">
+                PLOS Computational Biology. 2024 Jul 11;20(7):e1011642.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1371/journal.pcbi.1011642">10.1371/journal.pcbi.1011642</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#17</span>
+            <span class="pub-title">Effects of the spatial resolution of the Virtual Epileptic Patient on the identification of epileptogenic networks</span>
+            <div class="pub-authors">Lemaréchal JD, Triebkorn P, Vattikonda AN, <span class="my-name">Hashemi M</span>, Woodman M, Guye M, Bartolomei F, Wang HE, Jirsa V.</div>
+            <div class="pub-meta">
+                Imaging Neuroscience. 2024 May 8;2:imag-2-00153.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1162/imag_a_00153">10.1162/imag_a_00153</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#16</span>
+            <span class="pub-title">Hierarchical Bayesian pharmacometrics analysis of Baclofen for alcohol use disorder</span>
+            <div class="pub-authors">Baldy N, Simon N, Jirsa V, <span class="my-name">Hashemi M&#8224;*</span>.</div>
+            <div class="pub-meta">
+                Machine Learning: Science and Technology. 2023 Sep 14;4(3):035048.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1088/2632-2153/acf6aa">10.1088/2632-2153/acf6aa</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#15</span>
+            <span class="pub-title">The virtual aging brain: Causal inference supports interhemispheric dedifferentiation in healthy aging</span>
+            <div class="pub-authors">Lavanga M, Stumme J, Yalcinkaya BH, Fousek J, Jockwitz C, Sheheitli H, Bittner N, <span class="my-name">Hashemi M</span>, Petkoski S, Caspers S, Jirsa V.</div>
+            <div class="pub-meta">
+                NeuroImage. 2023 Dec 1;283:120403.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/j.neuroimage.2023.120403">10.1016/j.neuroimage.2023.120403</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#14</span>
+            <span class="pub-title">Amortized Bayesian inference on generative dynamical network models of epilepsy using deep neural density estimators</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Vattikonda AN, Jha J, Sip V, Woodman M, Bartolomei F, Jirsa V.</div>
+            <div class="pub-meta">
+                Neural Networks. 2023 Jun;163:178–194.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/j.neunet.2023.03.040">10.1016/j.neunet.2023.03.040</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#13</span>
+            <span class="pub-title">Delineating epileptogenic networks using brain imaging data and personalized modeling in drug-resistant epilepsy</span>
+            <div class="pub-authors">Wang H, Woodman M, Triebkorn P, Lemarechal JD, Jha J, Dollomaja B, Vattikonda AN, Sip V, Medina Villalon S, <span class="my-name">Hashemi M</span>, Guye M, Makhalova J, Bartolomei F, Jirsa V.</div>
+            <div class="pub-meta">
+                Science Translational Medicine. 2023 Jan 25;15(680):eabp8982.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1126/scitranslmed.abp8982">10.1126/scitranslmed.abp8982</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#12</span>
+            <span class="pub-title">Characterization of regional differences in resting-state fMRI with a data-driven network model of brain dynamics</span>
+            <div class="pub-authors">Sip V, <span class="my-name">Hashemi M</span>, Dickscheid T, Amunts K, Petkoski S, Jirsa V.</div>
+            <div class="pub-meta">
+                Science Advances. 2023 Mar 15;9(11):eabq7547.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1126/sciadv.abq7547">10.1126/sciadv.abq7547</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#11</span>
+            <span class="pub-title">Fully Bayesian estimation of virtual brain parameters with self-tuning Hamiltonian Monte Carlo</span>
+            <div class="pub-authors">Jha J, <span class="my-name">Hashemi M</span>, Vattikonda AN, Wang H, Jirsa V.</div>
+            <div class="pub-meta">
+                Machine Learning: Science and Technology. 2022 Sep 26;3(3):035016.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1088/2632-2153/ac9037">10.1088/2632-2153/ac9037</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#10</span>
+            <span class="pub-title">Brain simulation as a cloud service: The Virtual Brain on EBRAINS</span>
+            <div class="pub-authors">Schirner M... <span class="my-name">Hashemi M</span>... Ritter P.</div>
+            <div class="pub-meta">
+                NeuroImage. 2022 May 1;251:118973.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/j.neuroimage.2022.118973">10.1016/j.neuroimage.2022.118973</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#9</span>
+            <span class="pub-title">Identifying spatio-temporal seizure propagation patterns in epilepsy using Bayesian inference</span>
+            <div class="pub-authors">Vattikonda AN, <span class="my-name">Hashemi M</span>, Sip V, Woodman MM, Bartolomei F, Jirsa V.</div>
+            <div class="pub-meta">
+                Communications Biology. 2021 Nov 1;4(1):1244.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1038/s42003-021-02751-5">10.1038/s42003-021-02751-5</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#8</span>
+            <span class="pub-title">On the influence of prior information evaluated by fully Bayesian criteria in a personalized whole-brain model of epilepsy spread</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Vattikonda AN, Sip V, Diaz-Pier S, Peyser A, Wang H, Guye M, Bartolomei F, Woodman MM, Jirsa V.</div>
+            <div class="pub-meta">
+                PLoS Computational Biology. 2021 Jul 14;17(7):e1009129.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1371/journal.pcbi.1009129">10.1371/journal.pcbi.1009129</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#7</span>
+            <span class="pub-title">Data-driven method to infer the seizure propagation patterns in an epileptic brain from intracranial electroencephalography</span>
+            <div class="pub-authors">Sip V, <span class="my-name">Hashemi M</span>, Vattikonda AN, Woodman MM, Wang H, Scholly J, Medina Villalon S, Guye M, Bartolomei F, Jirsa V.</div>
+            <div class="pub-meta">
+                PLoS Computational Biology. 2021 Feb 17;17(2):e1008689.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1371/journal.pcbi.1008689">10.1371/journal.pcbi.1008689</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#6</span>
+            <span class="pub-title">The Bayesian Virtual Epileptic Patient: A probabilistic framework designed to infer the spatial map of epileptogenicity in a personalized large-scale brain model of epilepsy spread</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Vattikonda AN, Sip V, Guye M, Bartolomei F, Woodman MM, Jirsa V.</div>
+            <div class="pub-meta">
+                NeuroImage. 2020 Aug 15;217:116839.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1016/j.neuroimage.2020.116839">10.1016/j.neuroimage.2020.116839</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#5</span>
+            <span class="pub-title">Optimal model parameter estimation from EEG power spectrum features observed during general anesthesia</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Buhry L, Sleigh J.</div>
+            <div class="pub-meta">
+                Neuroinformatics. 2018 Apr;16(2):231–251.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1007/s12021-018-9369-x">10.1007/s12021-018-9369-x</a></span>
+                <span class="doi-link"><a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHBS2018.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#4</span>
+            <span class="pub-title">Anesthetic action on the transmission delay between cortex and thalamus explains the beta-buzz observed under propofol anesthesia</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Hight D, Sleigh J.</div>
+            <div class="pub-meta">
+                PLoS One. 2017 Jun 16;12(6):e0179286.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1371/journal.pone.0179286">10.1371/journal.pone.0179286</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#3</span>
+            <span class="pub-title">How the cortico-thalamic feedback affects the EEG power spectrum over frontal and occipital regions during propofol-induced sedation</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Sleigh J.</div>
+            <div class="pub-meta">
+                Journal of Computational Neuroscience. 2015 Oct;39(2):155–179.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1007/s10827-015-0569-1">10.1007/s10827-015-0569-1</a></span>
+                <span class="doi-link"><a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHS_2015.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">Anesthetic action on extra-synaptic receptors: effects in neural population models of EEG activity</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Sleigh J.</div>
+            <div class="pub-meta">
+                Frontiers in Systems Neuroscience. 2014 Dec 10;8:232.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.3389/fnsys.2014.00232">10.3389/fnsys.2014.00232</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">Effect of duration of synaptic activity on spike rate of a Hodgkin-Huxley neuron with delayed feedback</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M</span>, Valizadeh A, Azizi Y.</div>
+            <div class="pub-meta">
+                Physical Review E—Statistical, Nonlinear, and Soft Matter Physics. 2012 Feb;85(2 Pt 1):021917.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1103/PhysRevE.85.021917">10.1103/PhysRevE.85.021917</a></span>
+                <span class="doi-link"><a href="https://mhashemi0873.github.io/personalwebpage/uploads/HVA.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Submitted Original Articles</h3>
+
+        <div class="pub-card submitted">
+            <span class="pub-number">#4</span>
+            <span class="pub-title">A deformable attractor manifold organizes human resting-state brain dynamics</span>
+            <div class="pub-authors">Athanasiadis A, Woodman M, <span class="my-name">Hashemi M</span>, Triebkorn P, Petkoski S, Jirsa V.</div>
+            <div class="pub-meta">
+                bioRxiv. 2025.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.64898/2025.12.02.691788">10.64898/2025.12.02.691788</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card submitted">
+            <span class="pub-number">#3</span>
+            <span class="pub-title">Data-driven mean-field within whole-brain models</span>
+            <div class="pub-authors">Breyton M, Sip V, Woodman M, <span class="my-name">Hashemi M</span>, Petkoski S, Jirsa V.</div>
+            <div class="pub-meta">
+                arXiv. 2025.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.48550/arXiv.2509.02799">10.48550/arXiv.2509.02799</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card submitted">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">Degeneracy in neuronal bifurcation landscapes: equivalent bifurcation sequences across distinct parameter sets</span>
+            <div class="pub-authors">Cafaro G, Bernard C, <span class="my-name">Hashemi M</span>, Depannemaecker D.</div>
+            <div class="pub-meta">
+                bioRxiv. 2025.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1101/2025.08.04.668451">10.1101/2025.08.04.668451</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card submitted">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">Personalized virtual brains of Alzheimer’s Disease link dynamical biomarkers of fMRI with increased local excitability</span>
+            <div class="pub-authors">Yalçınkaya BH, Ziaeemehr A, Fousek J, <span class="my-name">Hashemi M</span>, Lavanga M, Solodkin A, McIntosh AR, Jirsa VK, Petkoski S.</div>
+            <div class="pub-meta">
+                medRxiv. 2023.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1101/2023.01.11.23284438">10.1101/2023.01.11.23284438</a></span>
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Editorial</h3>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">Bridging the Gap Between Neuroscience and Artificial Intelligence</span>
+            <div class="pub-authors">Kim CE, Sora AN, <span class="my-name">Hashemi M</span>, Kang J.</div>
+            <div class="pub-meta">
+                Frontiers in Computational Neuroscience, 2023.
+                <span class="doi-link"><a href="https://www.frontiersin.org/research-topics/36632/bridging-the-gap-between-neuroscience-and-artificial-intelligence/magazine">(See here)</a></span>
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Book Chapters</h3>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">How to render Neural Fields more realistic</span>
+            <div class="pub-authors">Hutt A, <span class="my-name">Hashemi M</span>, Graben P.</div>
+            <div class="pub-meta">
+                In: Validating Neuro-Computational Models... Springer. 2015; pp. 141–159.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1007/978-3-319-20037-8_6">10.1007/978-3-319-20037-8_6</a></span>
+                <span class="doi-link"><a href="https://mhashemi0873.github.io/personalwebpage/uploads/HHG_Neuralfields.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card accepted">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">A thalamocortical model to explain EEG during anaesthesia</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M</span>, Hutt A.</div>
+            <div class="pub-meta">
+                In: Self-Organization in Complex Systems... Springer. 2015; pp. 305–312.
+                <span class="doi-link">DOI: <a href="https://doi.org/10.1007/978-3-319-27635-9_20">10.1007/978-3-319-27635-9_20</a></span>
+                <span class="doi-link"><a href="https://mhashemi0873.github.io/personalwebpage/uploads/HWK.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Patents</h3>
+
+        <div class="pub-card patent">
+            <span class="pub-number">#4</span>
+            <span class="pub-title">A Method for Inferring Epileptogenicity of a Brain Region</span>
+            <div class="pub-authors">Hashemi M, Sip V, Vattikonda AN, Woodman M, Jirsa V.</div>
+            <div class="pub-meta">
+                WO/2021/197612, PCT/EP2020/059511.
+                <span class="doi-link"><a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2021197612&_fid=US399237357">(See here)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card patent">
+            <span class="pub-number">#3</span>
+            <span class="pub-title">Method for Inferring a Change in a Whole-brain Network and System with Stimulation</span>
+            <div class="pub-authors">Hashemi M, Arbabyazd L, Williamson A, Jirsa V.</div>
+            <div class="pub-meta">
+                WO/2024/218403, PCT/EP2024/060977.
+                <span class="doi-link"><a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2024218403&_cid=P22-MI37H0-61018-1">(See here)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card patent">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">Computer-Implemented Method for Inferring a Conduction Velocity of a Subject's Brain</span>
+            <div class="pub-authors">Hashemi M, Sorrentino P, Jirsa V.</div>
+            <div class="pub-meta">
+                WO/2025/114407, PCT/EP2024/083847.
+                <span class="doi-link"><a href="https://patentscope.wipo.int/search/fr/detail.jsf?docId=WO2025114407&_cid=P22-MI37H0-61018-1">(See here)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card patent">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">Bayesian Inversion of Whole-Brain Model of Epilepsy based on Real SEEG Recording</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M</span>, Jha J, Jirsa V.</div>
+            <div class="pub-meta">
+                Submitted. Réf/AMU: 21D051.
+            </div>
+        </div>
+
+
+        <h3 class="category-header">Published Abstracts</h3>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#7</span>
+            <span class="pub-title">Mapping brain lesions to conduction delays: the next step for personalized brain models in Multiple Sclerosis</span>
+            <div class="pub-authors">Mazzara C... <span class="my-name">Hashemi M*</span>.</div>
+            <div class="pub-meta">CNS 2024. <a href="https://link.springer.com/article/10.1007/s10827-024-00889-9">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#6</span>
+            <span class="pub-title">Model inversion techniques for seizure spread in individual brain networks</span>
+            <div class="pub-authors">Sip V, Jirsa V, <span class="my-name">Hashemi M</span>, Vattikonda AN, Jha J.</div>
+            <div class="pub-meta">BMC Neuroscience, CNS 2021. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8687879/">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#5</span>
+            <span class="pub-title">Inferring the dynamic of personalized large-scale brain network models using Bayesian framework</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>... Jirsa V.</div>
+            <div class="pub-meta">BMC Neuroscience, CNS 2019. <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/s12868-019-0538-0">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#4</span>
+            <span class="pub-title">Fitting a thalamo-cortical model to EEG power spectrum using evolutionary algorithm</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Sleigh J.</div>
+            <div class="pub-meta">ICMNS 2015. <a href="https://inria.hal.science/hal-01184206/preview/ICMNS_HHS.pdf">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#3</span>
+            <span class="pub-title">Thalamo-cortical mechanisms of the observed specific changes in frontal and occipital EEG rhythms...</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A, Sleigh J.</div>
+            <div class="pub-meta">BMC Neuroscience CNS, 2015. <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-16-S1-P232">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#2</span>
+            <span class="pub-title">Reproduction of EEG power spectrum over frontal region during the propofol-induced general anesthesia</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>... Graben P.</div>
+            <div class="pub-meta">BMC Neuroscience, CNS 2014. <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-15-S1-P211">(See here)</a></div>
+        </div>
+
+        <div class="pub-card abstract">
+            <span class="pub-number">#1</span>
+            <span class="pub-title">A thalamocortical model to explain EEG during anesthesia</span>
+            <div class="pub-authors"><span class="my-name">Hashemi M*</span>, Hutt A.</div>
+            <div class="pub-meta">BMC Neuroscience, CNS 2013. <a href="https://bmcneurosci.biomedcentral.com/articles/10.1186/1471-2202-14-S1-P177">(See here)</a></div>
+        </div>
+
+
+        <h3 class="category-header">Theses</h3>
+
+
+
+        <div class="pub-card">
+            <span class="pub-title">PhD Thesis: Analytical and numerical studies of thalamo-cortical neural population models during general anesthesia</span>
+            <div class="pub-authors"><span class="my-name">M. Hashemi</span> (2016)</div>
+            <div class="pub-meta">
+                Université de Lorraine, Computer Science.
+                <span class="doi-link"><a href="https://theses.hal.science/tel-01754610">(View PDF)</a></span>
+            </div>
+        </div>
+
+        <div class="pub-card">
+            <span class="pub-title">Master Thesis: Effect of the duration of the synaptic activity on a delayed recurrent neuronal loop</span>
+            <div class="pub-authors"><span class="my-name">M. Hashemi</span> (2012)</div>
+            <div class="pub-meta">
+                IASBS, Physics.
+                <span class="doi-link"><a href="uploads/MasterThesis_MeysamHASHEMI.pdf">(View PDF)</a></span>
+            </div>
+        </div>
+
+    </main>
 </body>
-
 </html>

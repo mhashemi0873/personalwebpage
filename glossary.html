@@ -1,233 +1,415 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage - free website template</title>
-  <meta name="keywords" content="Homepage, free download, website templates, CSS, HTML" />
-  <meta name="description" content="Homepage is a free website template from templatemo.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Meysam Hashemi</title>
+    <meta name="description" content="Glossary of Technical Terms in Computational Neuroscience and Bayesian Inference">
 
-  <link rel="stylesheet" href="templatemo_style.css" />
-  <link rel="stylesheet" href="css/coda-slider.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-  <script src="js/jquery-1.2.6.js"></script>
-  <script src="js/jquery.scrollTo-1.3.6.js"></script>
-  <script src="js/jquery.localscroll-1.2.5.js"></script>
-  <script src="js/jquery.serialScroll-1.2.1.js"></script>
-  <script src="js/coda-slider.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
+    <style>
+        /* --- 1. RESET & BASE STYLES --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. SIDEBAR (Navigation) --- */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .profile-header { margin-bottom: 2rem; }
+        .profile-header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .profile-header span { font-size: 0.9rem; color: #bdc3c7; }
+
+        .nav-links li { margin-bottom: 1rem; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: #bdc3c7;
+            font-size: 1.1rem;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+            color: #fff;
+            padding-left: 15px;
+        }
+        .nav-links a::before { content: "➤"; margin-right: 10px; font-size: 0.8rem; }
+
+        /* --- 3. MAIN CONTENT --- */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        /* --- 4. GLOSSARY SPECIFIC STYLES --- */
+        .page-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1rem;
+        }
+
+        .glossary-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .glossary-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid #2980b9; /* Accent color */
+            transition: transform 0.2s;
+        }
+        .glossary-item:hover { transform: translateX(5px); }
+
+        .term {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .definition {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* --- 5. RESPONSIVE --- */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <div id="slider">
-    <div id="templatemo_sidebar">
-      <div id="templatemo_header">
-        <a href="index.html">
-          <h1 style="color: white; font-size: 5em;"><img src="" alt="Home" /></h1>
-        </a>
-      </div>
-
-      <div class="contentcontainer med left" style="margin-left: -30px;">
-        <br /><br />
-        <a href="publications.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Publications</strong></font>
-          </font>
-        </a>
 
-        <br /><br />
-        <a href="highlights.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Highlights</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="glossary.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Glossary</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="projects.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Projects</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="software.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Code</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="cv.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>CV</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="contacts.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Contact</strong></font>
-          </font>
-        </a>
-      </div>
-    </div>
-
-    <div id="templatemo_main">
-      <div id="content">
-        <div class="scrollContainer">
-          <br /><br /><br />
-
-          <div class="panel" id="home">
-
-
-                                    <div class="contentcontainer med right" style="margin-right: -500px;">
-                                      <div class="contentcontainer med left" style="margin-left: 10px;">
-                                        <div style="color: black; font-size: 1.5em; line-height: 1.5; margin-left: 10px; margin-right: 150px; text-align: justify;">
-                                          <p>
-
-
-                    <font size="6" color="white">
-                      Technical terms:
-                    </font>
-                  </p>
-
-                  <p><strong>Artificial intelligence:</strong> A computer-based process that extracts non-trivial patterns from large-scale datasets to predict the outcomes of complex mechanisms.</p>
-
-                  <p><strong>Bayes’ rule:</strong> A mathematical rule that describes how the prior probability (ie, background information before data collection) is combined with likelihood function (ie, available information in observed data) to form the posterior probability for making predictions about future events.</p>
-
-                  <p><strong>Bayesian inference:</strong> A principled method for statistical inference that updates prior (initial) beliefs about a hypothesis using new evidence (from observed data), thereby naturally characterizing uncertainty over unknown quantities.</p>
-
-                  <p><strong>Complex systems theory:</strong> The field of study of mechanisms underlying the emergence of collective behaviours due to non-linear interactions of the constituents and environments of complex systems.</p>
-
-                  <p><strong>Connectome:</strong> The total set of links between brain regions.</p>
-
-                  <p><strong>Control (generative) parameters:</strong> The bifurcation parameters, setting, or configuration within a generative model that controls the synthesis of data and potentially represents causal relationships.</p>
-
-                  <p><strong>Cross-validation:</strong> A machine-learning technique to evaluate a model's performance and generalizability to independent data.</p>
-
-                  <p><strong>Deep neural density estimators:</strong> A class of artificial neural network-based approaches that are used to learn and approximate the underlying probability distribution from a given dataset.</p>
-
-                  <p><strong>Differential equations:</strong> The mathematical language involving a function and its derivatives to describe dynamic processes, where the evolution of one or two interacting variables over time defines the behavior of a complex system.</p>
-
-                  <p><strong>Diffusion Tensor Imaging (DTI):</strong> an MRI-based neuroimaging technique to map the white matter tracts by estimating the orientation and integrity of fiber pathways.</p>
-
-                  <p><strong>Epileptogenic zone:</strong> The connected brain regions involved in the primary organisation of seizures. Sometimes this zone is referred to as the area of brain regions that is necessary and sufficient for initiation of seizures, the removal of which guarantees the complete abolition of seizures.</p>
-
-                  <p><strong>Epileptor:</strong> A phenomenological model based on a system of coupled nonlinear differential equations generating epileptic dynamics.</p>
-
-                  <p><strong>Excitability parameter:</strong> A bifurcation parameter quantifying a neural population's tendency to respond to input.</p>
-
-                  <p><strong>Event:</strong> An outcome or a set of outcomes of an occurrence, such as seizures, involving uncertainty due to randomness.</p>
-
-                  <p><strong>Functional brain imaging data:</strong> Signals measured by devices intended to capture brain activity, such as EEG, magnetoencephalography, stereotactic EEG (SEEG), functional MRI, and PET.</p>
-
-                  <p><strong>Functional connectivity:</strong> Statistical dependence between spatially distinct brain regions, typically measured through correlations in neural activity.</p>
-
-                  <p><strong>Functional connectivity dynamic:</strong> Captures how functional connectivity patterns between brain regions change over time, reflecting the brain's capacity to switch among cognitive states.</p>
-
-                  <p><strong>Gain matrix:</strong> Mapping of the source of neuronal activity to sensor signals, taking into consideration the laws of physics and biophysical properties of tissue and bones.</p>
-
-                  <p><strong>Generative model:</strong> A statistical, machine learning, or mechanistic model that represents the underlying data distribution to generate new data resembling the original dataset.</p>
-
-                  <p><strong>Hidden state:</strong> A possible model outcome describing system behaviour, which cannot be measured directly but only inferred indirectly through observed data, at any given time.</p>
-
-                  <p><strong>Inference:</strong> Process of advancing from initial premises and observations to logical conclusions by quantifying the uncertainty in a model and data, thus providing an objectification of the validity of the decision.</p>
-
-                  <p><strong>Information criteria:</strong> Quantitative measures used to compare statistical models by balancing goodness of fit with model complexity.</p>
-
-                  <p><strong>Likelihood:</strong> The essential factor in model-based inference, defined as the probability of obtaining the data for a given set of parameter values in the model. Mathematically, it is defined as the conditional probability of observing the evidence given a particular hypothesis.</p>
-
-                  <p><strong>Machine learning:</strong> A subset of artificial intelligence that can learn the statistical relation between inputs and outputs, to identify relevant inputs from a large amount of data.</p>
-
-                  <p><strong>Markov chain Monte Carlo:</strong> A family of stochastic algorithms used for uncertainty quantification by drawing random samples from probability distributions, in which the sampling process does not require knowledge of the entire distribution.</p>
-
-                  <p><strong>Maximum a posteriori probability (MAP):</strong> An estimation method in Bayesian inference that selects the value of an unknown quantity that maximizes the posterior probability, given the observed data.</p>
-
-                  <p><strong>Monte Carlo sampling:</strong> A class of stochastic algorithms for sampling from a probability distribution.</p>
-
-                  <p><strong>MPR model:</strong> A mechanistic neural mass model driven by physical laws to describe the average membrane potential and firing rate of an infinite ensemble of all-to-all connected spiking neurons.</p>
-
-                  <p><strong>MRI-negative epilepsies:</strong> Patients presenting with MRI patterns without anomalies after an optimal acquisition protocol.</p>
-
-                  <p><strong>Neural mass models:</strong> A simplified mathematical modeling approach that represents the activity of large populations of strongly interconnected neurons as a single entity, using differential equations to describe their collective dynamics at the mesoscopic scale.</p>
-
-                  <p><strong>Neural field models:</strong> A mathematical framework that models the continuous spatial and temporal dynamics of neuronal activity using partial differential equations to capture the propagation of activity across the cortical surface.</p>
-
-                  <p><strong>Optimization:</strong> The process of finding the best solution from a set of possible choices, typically by maximizing or minimizing an objective function.</p>
-
-                  <p><strong>Power spectrum:</strong> Quantifies the distribution of signal power across frequencies, revealing the contribution of each frequency component to the overall signal.</p>
-
-                  <p><strong>Precision:</strong> The fraction of relevant areas among all those retrieved (also called positive predictive value). It provides quantification of the relevance of the results.</p>
-
-                  <p><strong>Predictive accuracy:</strong> A measure of how well a model's predictions match actual outcomes on unseen data. It reflects the model’s generalization ability and is often assessed using metrics like accuracy, root-mean-square-error, or log-likelihood.</p>
-
-                  <p><strong>Prior probability distribution:</strong> The probability distribution of an event or hypothesis before any new data are considered. The information considered to be prior in epilepsy can include any relevant empirical data or clinical hypothesis.</p>
-
-                  <p><strong>Probabilistic model:</strong> A model with some inherent randomness so that the same set of parameter values leads to an ensemble of different outputs based on their respective probabilities (eg, virtual brain models).</p>
-
-                  <p><strong>Probability distribution:</strong> The statistical description of potential outcomes of random events, where a numerical measure is assigned to the possibility of each specific outcome.</p>
-
-                  <p><strong>Probability density estimation:</strong> The process of inferring the underlying probability distribution of a random event based on observed data.</p>
-
-                  <p><strong>Posterior probability distribution:</strong> The updated probability distribution of a hypothesis or model parameters, such as epileptogenicity, obtained by combining previously available knowledge with information from new data evidence, such as data from SEEG.</p>
-
-                  <p><strong>Sampling:</strong> Estimation of the characteristics of the whole population by use of a random selection of a subset of the population to make statistical inferences.</p>
-
-                  <p><strong>SEEG (stereo-electroencephalography):</strong> An invasive method provides high spatial and temporal resolution from depth electrodes implanted in specific brain regions, allowing precise mapping of neural dynamics, especially in epilepsy evaluation and pre-surgical planning.</p>
-
-                  <p><strong>Simulation-based inference:</strong> A machine learning approach that involves generating synthetic data through forward simulations to make inferences about complex systems, often when analytic or computational solutions are unavailable.</p>
-
-                  <p><strong>Spectral embedding:</strong> A nonlinear dimensionality reduction using Laplacian eigenmaps, which preserves the local geometry.</p>
-
-                  <p><strong>Structural connectivity:</strong> The physical wiring of the brain, representing anatomical connections between regions via white matter tracts.</p>
-
-                  <p><strong>T1-weighted MRI:</strong> A structural imaging technique that provides high-resolution images based on differences in the T1 relaxation times of tissues.</p>
-
-                  <p><strong>The Virtual Brain:</strong> An open-source neuroinformatics platform for constructing and simulating personalized large-scale brain network models.</p>
-
-                  <p><strong>Tractography:</strong> Neuroimaging method that measures brain structural connectivity, by inferring white matter tracts from diffusion-weighted MRI data, using algorithms to reconstruct tracts from water molecule movements constrained by fibre bundles. When computed on the whole brain, it provides a connectome.</p>
-
-                  <p><strong>Variational inference:</strong> A technique in Bayesian statistics that approximates complex probability distributions through optimization. It recast the sampling to an optimization problem by selecting the closest distribution from a simpler family, minimizing the difference (typically via Kullback–Leibler divergence) from the true posterior.</p>
-
-                  <p><strong>VEP priors:</strong> Priors providing the location of the initiation of the seizures based on SEEG recordings processing.</p>
-
-                  <p><strong>Virtual brain:</strong> Data-driven full-brain model that uses the connectome for network construction, i.e., a set of equations describing regional brain dynamics placed at each node, which are then connected through a structural connectivity matrix.</p>
-
-                  <p><strong>Virtual Epileptic Patient:</strong> A workflow that uses personalized virtual brain models and machine learning methods. Patient-specific anatomical and functional data are integrated to help with clinical decision making by estimating the epileptogenic zones to optimize the surgical strategy.</p>
-                </div>
-
-                <br />
-
-</div> <!-- end of home -->
-
-</div> <!-- end of content -->
-
-<div id="templatemo_footer">
-
-
-
-</div> <!-- end of templatemo_footer -->
-
-</div> <!-- end of main -->
-
-</div>
-</div>
-</div>
+    <nav class="sidebar">
+        <div class="profile-header">
+            <h1>M. Hashemi</h1>
+            <span>Computational Neuroscience</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="highlights.html">Highlights</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="software.html">Code</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <h2 class="page-title">Technical Terms & Glossary</h2>
+
+        <div class="glossary-grid">
+
+            <div class="glossary-item">
+                <span class="term">Artificial intelligence</span>
+                <p class="definition">A computer-based process that extracts non-trivial patterns from large-scale datasets to predict the outcomes of complex mechanisms.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Bayes’ rule</span>
+                <p class="definition">A mathematical rule that describes how the prior probability (ie, background information before data collection) is combined with likelihood function (ie, available information in observed data) to form the posterior probability for making predictions about future events.</p>
+
+
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Bayesian inference</span>
+                <p class="definition">A principled method for statistical inference that updates prior (initial) beliefs about a hypothesis using new evidence (from observed data), thereby naturally characterizing uncertainty over unknown quantities.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Complex systems theory</span>
+                <p class="definition">The field of study of mechanisms underlying the emergence of collective behaviours due to non-linear interactions of the constituents and environments of complex systems.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Connectome</span>
+                <p class="definition">The total set of links between brain regions.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Control (generative) parameters</span>
+                <p class="definition">The bifurcation parameters, setting, or configuration within a generative model that controls the synthesis of data and potentially represents causal relationships.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Cross-validation</span>
+                <p class="definition">A machine-learning technique to evaluate a model's performance and generalizability to independent data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Deep neural density estimators</span>
+                <p class="definition">A class of artificial neural network-based approaches that are used to learn and approximate the underlying probability distribution from a given dataset.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Differential equations</span>
+                <p class="definition">The mathematical language involving a function and its derivatives to describe dynamic processes, where the evolution of one or two interacting variables over time defines the behavior of a complex system.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Diffusion Tensor Imaging (DTI)</span>
+                <p class="definition">An MRI-based neuroimaging technique to map the white matter tracts by estimating the orientation and integrity of fiber pathways.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Epileptogenic zone</span>
+                <p class="definition">The connected brain regions involved in the primary organisation of seizures. Sometimes this zone is referred to as the area of brain regions that is necessary and sufficient for initiation of seizures, the removal of which guarantees the complete abolition of seizures.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Epileptor</span>
+                <p class="definition">A phenomenological model based on a system of coupled nonlinear differential equations generating epileptic dynamics.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Excitability parameter</span>
+                <p class="definition">A bifurcation parameter quantifying a neural population's tendency to respond to input.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Event</span>
+                <p class="definition">An outcome or a set of outcomes of an occurrence, such as seizures, involving uncertainty due to randomness.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Functional brain imaging data</span>
+                <p class="definition">Signals measured by devices intended to capture brain activity, such as EEG, magnetoencephalography, stereotactic EEG (SEEG), functional MRI, and PET.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Functional connectivity</span>
+                <p class="definition">Statistical dependence between spatially distinct brain regions, typically measured through correlations in neural activity.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Functional connectivity dynamic</span>
+                <p class="definition">Captures how functional connectivity patterns between brain regions change over time, reflecting the brain's capacity to switch among cognitive states.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Gain matrix</span>
+                <p class="definition">Mapping of the source of neuronal activity to sensor signals, taking into consideration the laws of physics and biophysical properties of tissue and bones.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Generative model</span>
+                <p class="definition">A statistical, machine learning, or mechanistic model that represents the underlying data distribution to generate new data resembling the original dataset.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Hidden state</span>
+                <p class="definition">A possible model outcome describing system behaviour, which cannot be measured directly but only inferred indirectly through observed data, at any given time.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Inference</span>
+                <p class="definition">Process of advancing from initial premises and observations to logical conclusions by quantifying the uncertainty in a model and data, thus providing an objectification of the validity of the decision.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Information criteria</span>
+                <p class="definition">Quantitative measures used to compare statistical models by balancing goodness of fit with model complexity.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Likelihood</span>
+                <p class="definition">The essential factor in model-based inference, defined as the probability of obtaining the data for a given set of parameter values in the model. Mathematically, it is defined as the conditional probability of observing the evidence given a particular hypothesis.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Machine learning</span>
+                <p class="definition">A subset of artificial intelligence that can learn the statistical relation between inputs and outputs, to identify relevant inputs from a large amount of data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Markov chain Monte Carlo (MCMC)</span>
+                <p class="definition">A family of stochastic algorithms used for uncertainty quantification by drawing random samples from probability distributions, in which the sampling process does not require knowledge of the entire distribution.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Maximum a posteriori probability (MAP)</span>
+                <p class="definition">An estimation method in Bayesian inference that selects the value of an unknown quantity that maximizes the posterior probability, given the observed data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Monte Carlo sampling</span>
+                <p class="definition">A class of stochastic algorithms for sampling from a probability distribution.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">MPR model</span>
+                <p class="definition">A mechanistic neural mass model driven by physical laws to describe the average membrane potential and firing rate of an infinite ensemble of all-to-all connected spiking neurons.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">MRI-negative epilepsies</span>
+                <p class="definition">Patients presenting with MRI patterns without anomalies after an optimal acquisition protocol.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Neural mass models</span>
+                <p class="definition">A simplified mathematical modeling approach that represents the activity of large populations of strongly interconnected neurons as a single entity, using differential equations to describe their collective dynamics at the mesoscopic scale.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Neural field models</span>
+                <p class="definition">A mathematical framework that models the continuous spatial and temporal dynamics of neuronal activity using partial differential equations to capture the propagation of activity across the cortical surface.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Optimization</span>
+                <p class="definition">The process of finding the best solution from a set of possible choices, typically by maximizing or minimizing an objective function.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Power spectrum</span>
+                <p class="definition">Quantifies the distribution of signal power across frequencies, revealing the contribution of each frequency component to the overall signal.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Precision</span>
+                <p class="definition">The fraction of relevant areas among all those retrieved (also called positive predictive value). It provides quantification of the relevance of the results.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Predictive accuracy</span>
+                <p class="definition">A measure of how well a model's predictions match actual outcomes on unseen data. It reflects the model’s generalization ability and is often assessed using metrics like accuracy, root-mean-square-error, or log-likelihood.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Prior probability distribution</span>
+                <p class="definition">The probability distribution of an event or hypothesis before any new data are considered. The information considered to be prior in epilepsy can include any relevant empirical data or clinical hypothesis.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Probabilistic model</span>
+                <p class="definition">A model with some inherent randomness so that the same set of parameter values leads to an ensemble of different outputs based on their respective probabilities (eg, virtual brain models).</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Probability distribution</span>
+                <p class="definition">The statistical description of potential outcomes of random events, where a numerical measure is assigned to the possibility of each specific outcome.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Probability density estimation</span>
+                <p class="definition">The process of inferring the underlying probability distribution of a random event based on observed data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Posterior probability distribution</span>
+                <p class="definition">The updated probability distribution of a hypothesis or model parameters, such as epileptogenicity, obtained by combining previously available knowledge with information from new data evidence, such as data from SEEG.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Sampling</span>
+                <p class="definition">Estimation of the characteristics of the whole population by use of a random selection of a subset of the population to make statistical inferences.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">SEEG (stereo-electroencephalography)</span>
+                <p class="definition">An invasive method provides high spatial and temporal resolution from depth electrodes implanted in specific brain regions, allowing precise mapping of neural dynamics, especially in epilepsy evaluation and pre-surgical planning.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Simulation-based inference (SBI)</span>
+                <p class="definition">A machine learning approach that involves generating synthetic data through forward simulations to make inferences about complex systems, often when analytic or computational solutions are unavailable.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Spectral embedding</span>
+                <p class="definition">A nonlinear dimensionality reduction using Laplacian eigenmaps, which preserves the local geometry.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Structural connectivity</span>
+                <p class="definition">The physical wiring of the brain, representing anatomical connections between regions via white matter tracts.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">T1-weighted MRI</span>
+                <p class="definition">A structural imaging technique that provides high-resolution images based on differences in the T1 relaxation times of tissues.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">The Virtual Brain</span>
+                <p class="definition">An open-source neuroinformatics platform for constructing and simulating personalized large-scale brain network models.</p>
+
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Tractography</span>
+                <p class="definition">Neuroimaging method that measures brain structural connectivity, by inferring white matter tracts from diffusion-weighted MRI data, using algorithms to reconstruct tracts from water molecule movements constrained by fibre bundles. When computed on the whole brain, it provides a connectome.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Variational inference</span>
+                <p class="definition">A technique in Bayesian statistics that approximates complex probability distributions through optimization. It recast the sampling to an optimization problem by selecting the closest distribution from a simpler family, minimizing the difference (typically via Kullback–Leibler divergence) from the true posterior.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">VEP priors</span>
+                <p class="definition">Priors providing the location of the initiation of the seizures based on SEEG recordings processing.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Virtual brain</span>
+                <p class="definition">Data-driven full-brain model that uses the connectome for network construction, i.e., a set of equations describing regional brain dynamics placed at each node, which are then connected through a structural connectivity matrix.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="term">Virtual Epileptic Patient</span>
+                <p class="definition">A workflow that uses personalized virtual brain models and machine learning methods. Patient-specific anatomical and functional data are integrated to help with clinical decision making by estimating the epileptogenic zones to optimize the surgical strategy.</p>
+            </div>
+
+        </div> </main>
 
 </body>
-
 </html>

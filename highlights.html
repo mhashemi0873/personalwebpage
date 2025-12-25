@@ -1,156 +1,200 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage - free website template</title>
-  <meta name="keywords" content="Homepage, free download, website templates, CSS, HTML" />
-  <meta name="description" content="Homepage is a free website template from templatemo.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlights - Meysam Hashemi</title>
+    <meta name="description" content="Research Highlights and Scientific Vision of Meysam Hashemi">
 
-  <link rel="stylesheet" href="templatemo_style.css" />
-  <link rel="stylesheet" href="css/coda-slider.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-  <script src="js/jquery-1.2.6.js"></script>
-  <script src="js/jquery.scrollTo-1.3.6.js"></script>
-  <script src="js/jquery.localscroll-1.2.5.js"></script>
-  <script src="js/jquery.serialScroll-1.2.1.js"></script>
-  <script src="js/coda-slider.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
+    <style>
+        /* --- 1. RESET & BASE STYLES --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. SIDEBAR (Navigation) --- */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .profile-header { margin-bottom: 2rem; }
+        .profile-header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .profile-header span { font-size: 0.9rem; color: #bdc3c7; }
+
+        .nav-links li { margin-bottom: 1rem; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: #bdc3c7;
+            font-size: 1.1rem;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+            color: #fff;
+            padding-left: 15px;
+        }
+        .nav-links a::before { content: "➤"; margin-right: 10px; font-size: 0.8rem; }
+
+        /* --- 3. MAIN CONTENT --- */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        /* --- 4. HIGHLIGHTS SPECIFIC STYLES --- */
+        .page-header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .page-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        /* Content Card */
+        .highlight-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            font-family: 'Lora', serif; /* Serif font for long reading */
+            border-left: 6px solid #e67e22; /* Orange accent */
+        }
+
+        .highlight-card p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .highlight-card strong {
+            color: #d35400;
+            font-weight: 700;
+        }
+
+        /* List Styling */
+        .causal-list {
+            background-color: #fff8e1; /* Light yellow bg */
+            padding: 2rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            list-style-type: none;
+            border: 1px solid #ffe0b2;
+        }
+
+        .causal-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif; /* Sans-serif for technical list */
+            font-size: 1.1rem;
+        }
+
+        .causal-list li::before {
+            content: "✓";
+            color: #e67e22;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* --- 5. RESPONSIVE --- */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .highlight-card { padding: 1.5rem; font-size: 1.1rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <div id="slider">
-    <div id="templatemo_sidebar">
-      <div id="templatemo_header">
-        <a href="index.html">
-          <h1 style="color: white; font-size: 5em;"><img src="" alt="Home" /></h1>
-        </a>
-      </div>
 
-      <div class="contentcontainer med left" style="margin-left: -30px;">
-        <br /><br />
-        <a href="publications.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Publications</strong></font>
-          </font>
-        </a>
+    <nav class="sidebar">
+        <div class="profile-header">
+            <h1>M. Hashemi</h1>
+            <span>Computational Neuroscience</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="highlights.html">Highlights</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="software.html">Code</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <br /><br />
-        <a href="highlights.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Highlights</strong></font>
-          </font>
-        </a>
+    <main class="main-content">
 
-        <br /><br />
-        <a href="glossary.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Glossary</strong></font>
-          </font>
-        </a>
+        <div class="page-header">
+            <h2 class="page-title">Research Vision & Highlights</h2>
+        </div>
 
-        <br /><br />
-        <a href="projects.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Projects</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="software.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Code</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="cv.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>CV</strong></font>
-          </font>
-        </a>
-
-        <br /><br />
-        <a href="contacts.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Contact</strong></font>
-          </font>
-        </a>
-      </div>
-    </div>
-
-    <div id="templatemo_main">
-      <div id="content">
-        <div class="scrollContainer">
-          <br /><br /><br />
-
-          <div class="panel" id="home">
-
-
-                                    <div class="contentcontainer med right" style="margin-right: -500px;">
-                                      <div class="contentcontainer med left" style="margin-left: 10px;">
-                                        <div style="color: black; font-size: 1.em; line-height: 1.5; margin-left: 10px; margin-right: 150px; text-align: justify;">
-                                          <p>
-
-
-                <div style="
-                  max-width: 880px;
-                  padding: 14px 18px;
-                  margin: 20px 0;
-                  border: 1px solid #ddd;
-                  border-radius: 6px;
-                  background-color: #f9f9f9;
-                  font-size: 1.4em;
-                  line-height: 1.5;
-                ">
-                  <p>
-                    <strong>Brain disorders</strong> confront us with a paradox that is rooted in two opposing realities. On the one hand, we have more data than ever (from multimodal imaging to electrophysiology). On the other hand, clinical action remains constrained by population averages and by the absence of a mechanistic theory that can be trusted at the individual level—especially in neurological diorders and psychiatry, where heterogeneity and comorbidity dominate.
-                  </p>
-
-                  <p>
-                    A central reason for this gap is <strong>mechanistic uncertainty</strong>.
-                    For most phenotypes, multiple causal mechanisms are plausible; different modeling and inference approaches often test one mechanism (or one family) at a time and obtain slightly different—sometimes incompatible—answers. This is not only a “methods” problem: in multiscale systems like the brain, different mechanisms can produce similar emergent behavior (a form of degeneracy), meaning that the same data can be explained by multiple causal stories unless we explicitly quantify uncertainty and compare hypotheses.
-                  </p>
-
-                  <p>
-                    In a degenerate system, reliable mechanism-based prediction requires convergence across inference methods and mechanistic hypotheses toward a <strong>minimally sufficient common denominator of causality</strong> of causality.
-                    Concretely, when inference is constrained by multimodal anatomical/functional data, we can:
-                  </p>
-
-                  <p>(i) infer probability rather than single best-fit solution,</p>
-                  <p>(ii) compare competing mechanistic hypotheses, and</p>
-                  <p>(iii) identify what is stable across methods and models.</p>
-
-                  <p>
-                    The result is a <strong>consensus causal core</strong> that is robust enough to support validation, and clinical interpretation.
-                  </p>
-                </div>
-
-                <br />
-
-</div> <!-- end of home -->
-
-</div> <!-- end of content -->
-
-<div id="templatemo_footer">
+        <div class="highlight-card">
 
 
 
-</div> <!-- end of templatemo_footer -->
+            <p>
+                <strong>Brain disorders</strong> confront us with a paradox that is rooted in two opposing realities. On the one hand, we have more data than ever (from multimodal imaging to electrophysiology). On the other hand, clinical action remains constrained by population averages and by the absence of a mechanistic theory that can be trusted at the individual level—especially in neurological disorders and psychiatry, where heterogeneity and comorbidity dominate.
+            </p>
 
-</div> <!-- end of main -->
+            <p>
+                A central reason for this gap is <strong>mechanistic uncertainty</strong>.
+                For most phenotypes, multiple causal mechanisms are plausible; different modeling and inference approaches often test one mechanism (or one family) at a time and obtain slightly different—sometimes incompatible—answers. This is not only a “methods” problem: in multiscale systems like the brain, different mechanisms can produce similar emergent behavior (a form of degeneracy), meaning that the same data can be explained by multiple causal stories unless we explicitly quantify uncertainty and compare hypotheses.
+            </p>
 
-</div>
-</div>
-</div>
+
+
+            <p>
+                In a degenerate system, reliable mechanism-based prediction requires convergence across inference methods and mechanistic hypotheses toward a <strong>minimally sufficient common denominator of causality</strong>.
+                Concretely, when inference is constrained by multimodal anatomical/functional data, we can:
+            </p>
+
+            <ul class="causal-list">
+                <li>(i) Infer probability rather than single best-fit solution,</li>
+                <li>(ii) Compare competing mechanistic hypotheses, and</li>
+                <li>(iii) Identify what is stable across methods and models.</li>
+            </ul>
+
+
+
+            <p>
+                The result is a <strong>consensus causal core</strong> that is robust enough to support validation and clinical interpretation.
+            </p>
+
+        </div>
+
+    </main>
 
 </body>
-
 </html>

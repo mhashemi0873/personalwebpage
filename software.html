@@ -1,352 +1,285 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage - free website template</title>
-  <meta name="keywords" content="Homepage, free download, website templates, CSS, HTML" />
-  <meta name="description" content="Homepage is a free website template from templatemo.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software & Code - Meysam Hashemi</title>
+    <meta name="description" content="Academic Portfolio: Probabilistic Modeling & Computational Neuroscience - Meysam Hashemi">
 
-  <link rel="stylesheet" href="templatemo_style.css" />
-  <link rel="stylesheet" href="css/coda-slider.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-  <script src="js/jquery-1.2.6.js"></script>
-  <script src="js/jquery.scrollTo-1.3.6.js"></script>
-  <script src="js/jquery.localscroll-1.2.5.js"></script>
-  <script src="js/jquery.serialScroll-1.2.1.js"></script>
-  <script src="js/coda-slider.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
+    <style>
+        /* --- 1. RESET & BASE STYLES --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* Global list reset so sidebar doesn't get messed up */
+        ul, ol { list-style: none; margin: 0; padding: 0; }
+
+        /* --- 2. SIDEBAR (Navigation) --- */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .profile-header { margin-bottom: 2rem; }
+        .profile-header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .profile-header span { font-size: 0.9rem; color: #bdc3c7; }
+
+        .nav-links li { margin-bottom: 1rem; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: #bdc3c7;
+            font-size: 1.1rem;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+            color: #fff;
+            padding-left: 15px; /* Slide effect */
+        }
+
+        /* The Arrow on the left */
+        .nav-links a::before { content: "➤"; margin-right: 10px; font-size: 0.8rem; }
+
+        /* --- 3. MAIN CONTENT --- */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .page-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        /* --- 4. SOFTWARE PAGE SPECIFIC STYLES --- */
+
+        /* Introduction Section */
+        .intro {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            border-left: 5px solid #2ecc71; /* Green accent */
+        }
+        .intro h2 {
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .intro p { line-height: 1.8; color: #555; margin-bottom: 1.5rem; text-align: justify; }
+
+        .github-btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .github-btn:hover { background-color: #000; }
+
+        /* Project Cards */
+        .project-list { display: grid; gap: 2rem; }
+
+        .project-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .project-title {
+            color: #c0392b; /* Dark Red */
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .links-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 10px; }
+
+        .link-badge {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        .link-badge.ebrains { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+        .link-badge.github { background-color: #f5f5f5; color: #333; border: 1px solid #ddd; }
+        .link-badge:hover { opacity: 0.8; text-decoration: underline; }
+
+        /* --- 5. RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+            }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <div id="slider">
-    <div id="templatemo_sidebar">
-      <div id="templatemo_header">
-        <a href="index.html">
-          <h1 style="color: white; font-size: 5em;"><img src="" alt="Home" /></h1>
-        </a>
-      </div>
 
-      <div class="contentcontainer med left" style="margin-left: -30px;">
-        <br /><br />
-        <a href="publications.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Publications</strong></font>
-          </font>
-        </a>
+    <nav class="sidebar">
+        <div class="profile-header">
+            <h1>M. Hashemi</h1>
+            <span>Computational Neuroscience</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="highlights.html">Highlights</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="software.html">Code</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <br /><br />
-        <a href="highlights.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Highlights</strong></font>
-          </font>
-        </a>
+    <main class="main-content">
 
-        <br /><br />
-        <a href="glossary.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Glossary</strong></font>
-          </font>
-        </a>
+        <div class="page-header">
+            <h2 class="page-title">Software & Code</h2>
+        </div>
 
-        <br /><br />
-        <a href="projects.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>Projects</strong></font>
-          </font>
-        </a>
+        <section class="intro">
+            <h2>About My Work</h2>
+            <p>
+                I aim to build inference tools that are automatic, flexible, and scalable. Technically, I have developed:
+                <br><br>
+                <strong>(1) Adaptive Markov Chain Monte Carlo algorithms</strong><br>
+                <strong>(2) Amortized simulation-based inference methods</strong> leveraging probabilistic deep learning.
+                <br><br>
+                These tools address challenges in Bayesian inference from brain recordings across multiple spatiotemporal scales and are integrated into the
+                <a href="https://www.ebrains.eu" target="_blank" style="color: #2ecc71; font-weight: bold;">EBRAINS</a> platform.
+            </p>
+            <a href="https://github.com/mhashemi0873" class="github-btn" target="_blank">View My GitHub</a>
+        </section>
 
-        <br /><br />
-        <a href="software.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Code</strong></font>
-          </font>
-        </a>
+        <div class="project-list">
 
-        <br /><br />
-        <a href="cv.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5" color="white"><strong>CV</strong></font>
-          </font>
-        </a>
+            <div class="project-card">
+                <span class="project-title">1) Virtual Brain Inference (VBI) at whole-brain level</span>
+                <div class="links-container">
+                    <a href="https://search.kg.ebrains.eu/instances/83d0256f-42d4-465d-bd20-31c99276f300" class="link-badge ebrains">➤ View in EBRAINS</a>
+                    <a href="https://github.com/ins-amu/vbi" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
-        <br /><br />
-        <a href="contacts.html">
-          <span class="ui_icon aboutus"></span>
-          <font size="6" color="black">&#9758;&nbsp;
-            <font size="5." color="white"><strong>Contact</strong></font>
-          </font>
-        </a>
-      </div>
-    </div>
+            <div class="project-card">
+                <span class="project-title">2) Bayesian Virtual Epileptic Patient (BVEP)</span>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Using Stan/PyMc3/Numpyro/SBI</p>
+                <div class="links-container">
+                    <a href="https://wiki.ebrains.eu/bin/view/Collabs/bayesian-virtual-epileptic-patient" class="link-badge ebrains">➤ View in EBRAINS</a>
+                    <a href="https://github.com/mhashemi0873/BVEP" class="link-badge github">➤ BVEP GitHub</a>
+                    <a href="https://github.com/mhashemi0873/SourceEstimation" class="link-badge github">➤ Source Estimation GitHub</a>
+                </div>
+            </div>
 
-    <div id="templatemo_main">
-      <div id="content">
-        <div class="scrollContainer">
-          <br /><br /><br />
+            <div class="project-card">
+                <span class="project-title">3) Dynamic Causal Modeling (DCM-PPLs)</span>
+                <div class="links-container">
+                    <a href="https://wiki.ebrains.eu/bin/view/Collabs/automatic-dcm/" class="link-badge ebrains">➤ View in EBRAINS</a>
+                    <a href="https://github.com/ins-amu/DCM_PPLs" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
-          <div class="panel" id="home">
+            <div class="project-card">
+                <span class="project-title">4) Inference on Macroscopic Dynamics (Inf-MFM)</span>
+                <div class="links-container">
+                    <a href="https://wiki.ebrains.eu/bin/view/Collabs/inference-mfm" class="link-badge ebrains">➤ View in EBRAINS</a>
+                    <a href="https://github.com/ins-amu/Inference_MFM" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
+            <div class="project-card">
+                <span class="project-title">5) 2D-Epileptor (Slow-fast dynamical system)</span>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/Epileptor2D" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
+            <div class="project-card">
+                <span class="project-title">6) Spectral Power Fitting</span>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Optimization (PSO, DE, GA) & MCMC</p>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/SpectralPowerFitting" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
+            <div class="project-card">
+                <span class="project-title">7) Time Series Forecasting</span>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">AR, LSTM, Gaussian Process</p>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/ForecastingTimeSeries" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
-                                    <div class="contentcontainer med right" style="margin-right: -520px;">
-                                      <div class="contentcontainer med left" style="margin-left: 10px;">
-                                        <div style="color: black; font-size: 1.5em; line-height: 1.5; margin-left: 10px; margin-right: 150px; text-align: justify;">
-                                          <p>
+            <div class="project-card">
+                <span class="project-title">8) PkPd Models using Stan</span>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/Stan_PKPD_examples" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
+            <div class="project-card">
+                <span class="project-title">9) Hidden Markov Model (HMM) using PyMC</span>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/HMM" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
-                    <font size="6" color="black">&#9758;&nbsp;</font>
-                    <a href="https://github.com/mhashemi0873" rel="nofollow">
-                      <font size="6" color="white"><u> My GitHub</u></font>
-                    </a>
-                  </h1>
-  <br />  <br />
+            <div class="project-card">
+                <span class="project-title">10) Vector Autoregressive (VAR) Model</span>
+                <div class="links-container">
+                    <a href="https://github.com/mhashemi0873/VAR" class="link-badge github">➤ View on GitHub</a>
+                </div>
+            </div>
 
-                  <p>
-                    <font size="4" color="black" style="display: inline; line-height: 30px;"></font>
-                  </p>
-
-                  <div class="contentcontainer med right" style="margin-right: -20px;">
-
-                    <p>
-                      <font size="4.5" color="grey">
-                        <p style="text-align: justify; line-height: 1.7;">
-                          <font size="4" color="black">
-                            I aim to build inference tools that are automatic, flexible, and scalable.
-
-                            Technically, I have developed:
-                            <br />
-                            <strong>(1) adaptive Markov chain Monte Carlo algorithms</strong> and
-                            <br />
-                            <strong>(2) amortized simulation-based inference methods</strong> leveraging
-                            probabilistic deep learning to address challenges in Bayesian inference from
-                            brain recordings across multiple spatiotemporal scales.
-                            <br /><br />
-                            These tools are open source and integrated into the
-                            <a href="https://www.ebrains.eu" target="_blank" style="color: blue; font-weight: 600;">EBRAINS</a> platform
-                            providing free inference services.
-                          </font>
-                        </p>
-                      </font>
-                    </p>
-                  </div>
-
-                  <br />
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 1) Virtual Brain Inference (VBI) at whole-brain level:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://search.kg.ebrains.eu/instances/83d0256f-42d4-465d-bd20-31c99276f300" rel="nofollow">
-                        <font size="4" color="white"><u> VBI in EBRAINS</u></font>
-                      </a>
-                    </h3>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/ins-amu/vbi" rel="nofollow">
-                        <font size="4" color="white"><u> VBI in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 2) Bayesian inference on on a whole-brain model of epielpsy spread (BVEP), using Stan/PyMc3/Numpyro/SBI:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://wiki.ebrains.eu/bin/view/Collabs/bayesian-virtual-epileptic-patient" rel="nofollow">
-                        <font size="4" color="white"><u> BVEP in EBRAINS</u></font>
-                      </a>
-                    </h3>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/BVEP" rel="nofollow">
-                        <font size="4" color="white"><u> BVEP in GitHub</u></font>
-                      </a>
-                    </h3>
-
-                    <p><font size="4" color="black">Soure localization in BVEP:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/SourceEstimation" rel="nofollow">
-                        <font size="4" color="white"><u> Source Estimation in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 3)   Dynamic Causal Modeling in Probabilistic Programming Languages (DCM-PPLs)</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://wiki.ebrains.eu/bin/view/Collabs/automatic-dcm/" rel="nofollow">
-                        <font size="4" color="white"><u> DCM-PPLs in EBRAINS</u></font>
-                      </a>
-                    </h3>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/ins-amu/DCM_PPLs" rel="nofollow">
-                        <font size="4" color="white"><u> DCM-PPLs in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 4) Inference on the Macroscopic Dynamics of Spiking Neurons (Inf-MFM):</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://wiki.ebrains.eu/bin/view/Collabs/inference-mfm" rel="nofollow">
-                        <font size="4" color="white"><u> Inf-MFM in EBRAINS</u></font>
-                      </a>
-                    </h3>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/ins-amu/Inference_MFM" rel="nofollow">
-                        <font size="4" color="white"><u> Inf-MFM in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 5) Bayesian inference on a slow-fast dynamical system (2D-Epileptor), using Stan/PyMc3/Numpyro/SBI:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/Epileptor2D" rel="nofollow">
-                        <font size="4" color="white"><u> 2D-Epileptor in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="3" color="darkred"> 6) Spectral power fitting using optimization algorithms (PSO, DE, GA, CMAES, etc) and MCMC sampling:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/SpectralPowerFitting" rel="nofollow">
-                        <font size="4" color="white"><u> SpectralPowerFitting in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 7) Time series forcasting using AR, LSTM, Gussian process:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/ForecastingTimeSeries" rel="nofollow">
-                        <font size="4" color="white"><u> ForecastingTimeSeries in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 8) PdPk models using Stan:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/Stan_PKPD_examples" rel="nofollow">
-                        <font size="4" color="white"><u> Stan_PKPD_examples in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 9) Hidden Markov Model (HMM) using PyMC:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/HMM" rel="nofollow">
-                        <font size="4" color="white"><u> HMM in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 10) Vector Autoregressive (VAR) model:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/VAR" rel="nofollow">
-                        <font size="4" color="white"><u> VAR in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 11) Probabilistic PCA using PyMC3 and scikit-learn:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/PPCA" rel="nofollow">
-                        <font size="4" color="white"><u> PPCA in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 12) 8schoolse xample using Stan/PyMc3/Numpyro:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/8schoolsexample" rel="nofollow">
-                        <font size="4" color="white"><u> 8schoolsexample in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 13) Polynomial fitting and order selection using Stan:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/PolynomialModelComparision" rel="nofollow">
-                        <font size="4" color="white"><u> PolynomialModelComparision in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-                  <div class="contentcontainer med right" style="margin-right: -50px;">
-                    <p><font size="4" color="darkred"> 14) Stability of Delay Differential Equations (DDEs) in MATLAB:</font></p>
-
-                    <h3 style="color: #229922;">
-                      <font size="5" color="black">&#9758;&nbsp;</font>
-                      <a href="https://github.com/mhashemi0873/DDEs" rel="nofollow">
-                        <font size="4" color="white"><u> DDEs in GitHub</u></font>
-                      </a>
-                    </h3>
-                  </div>
-
-</div> <!-- end of home -->
-
-</div> <!-- end of content -->
-
-<div id="templatemo_footer">
-
-
-
-</div> <!-- end of templatemo_footer -->
-
-</div> <!-- end of main -->
-
-</div>
-</div>
-</div>
-
+        </div>
+    </main>
 </body>
-
 </html>
