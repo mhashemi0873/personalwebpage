@@ -148,22 +148,20 @@ ul.navigation a:focus {
     display: none;
 }
 
-@media (max-width: 568px) {
+/* Keep the original template look; just scale it on small screens */
+@media (max-width: 980px) {
   #slider {
-    transform: scale(0.5);
+    transform: scale(0.9);
     transform-origin: top left;
-    height: auto !important; /* Allow the container to shrink */
   }
+  body { overflow-x: hidden; }
+}
 
-  /* These lines remove the "ghost" space caused by fixed heights */
-  #content,
-  .scroll,
-  .scrollContainer,
-  .scrollContainer div.panel {
-    height: auto !important;
-    min-height: 0 !important;
+@media (max-width: 768px) {
+  #slider {
+    transform: scale(0.75);
+    transform-origin: top left;
   }
-
   body { overflow-x: hidden; }
 }
 
@@ -171,6 +169,20 @@ ul.navigation a:focus {
   #slider {
     transform: scale(0.60);
     transform-origin: top left;
-    height: auto !important; /* Allow the container to shrink */
+  }
+  body { overflow-x: hidden; }
+}
+
+@media (max-width: 768px) {
+  body.home-page #content,
+  body.home-page .scroll,
+  body.home-page .scrollContainer,
+  body.home-page .scrollContainer div.panel {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.home-page #slider {
+    height: auto !important;
   }
 }
