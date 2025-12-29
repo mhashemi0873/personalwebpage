@@ -75,9 +75,8 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     color: #2c3e50;
 }
 
-/* --- 4. CARDS & SECTIONS --- */
-/* Desktop Padding (Big spacious look) */
-.intro, .intro-box, .content-section {
+/* --- 4. COMPONENT STYLES (Cards, Intros, etc.) --- */
+.intro, .intro-box, .content-section, .cta-box {
     background: #fff;
     padding: 2.5rem; /* Spacious padding for desktop */
     border-radius: 8px;
@@ -86,6 +85,15 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 }
 .intro { border-left: 5px solid #2ecc71; }
 .intro-box { border-left: 5px solid #2980b9; }
+
+.cta-box {
+    background-color: #e8f8f5;
+    border: 1px solid #1abc9c;
+    text-align: center;
+}
+.cta-title {
+    color: #16a085; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem; display: block;
+}
 
 .github-btn {
     display: inline-block;
@@ -113,6 +121,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     color: #c0392b; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.8rem; display: block;
 }
 
+/* Links inside cards */
 .links-container { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 10px; }
 .link-badge {
     font-size: 0.9rem; padding: 6px 12px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center;
@@ -128,7 +137,15 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .figure-container img { max-width: 100%; height: auto; border-radius: 4px; }
 .caption { display: block; margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic; text-align: justify; padding: 0 1rem; }
 
-/* Standard Lists inside content */
+/* Headers within text */
+h3.section-title {
+    font-family: 'Lora', serif; font-size: 1.6rem; color: #2c3e50; margin-top: 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 10px;
+}
+h4.subsection-title {
+    font-family: 'Lora', serif; font-size: 1.3rem; color: #7f8c8d; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: bold;
+}
+
+/* Specific List Styles for Content */
 .main-content ul { list-style: disc; margin-left: 20px; margin-bottom: 1.5rem; }
 .main-content ol { list-style: decimal; margin-left: 20px; margin-bottom: 1.5rem; }
 .main-content li { margin-bottom: 0.5rem; }
@@ -150,7 +167,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* --- 6. RESPONSIVE DESIGN (Make it wider on phone) --- */
+/* --- 6. RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
     /* Show the menu button */
     .mobile-menu-btn { display: block; }
@@ -164,24 +181,21 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
         transform: translateX(0);
     }
 
-    /* Widen the Main Content Area */
+    /* Widen Main Content */
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 1rem; /* Reduced from 3rem */
+        padding: 1rem; /* Less padding = Wider content */
         padding-top: 60px; /* Space for the menu button */
     }
 
     /* Reduce padding inside cards to maximize space */
-    .intro, .intro-box, .content-section, .project-card {
-        padding: 1.2rem; /* Reduced from 2.5rem */
+    .intro, .intro-box, .content-section, .project-card, .cta-box {
+        padding: 1.2rem;
     }
 
-    .page-title {
-        font-size: 1.6rem; /* Slightly smaller header to fit better */
-    }
+    .page-title { font-size: 1.6rem; }
 
-    /* Make link buttons slightly more compact on mobile */
     .links-container { gap: 0.5rem; }
     .link-badge { padding: 5px 8px; font-size: 0.85rem; }
 }
