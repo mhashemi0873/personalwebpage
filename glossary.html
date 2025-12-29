@@ -474,6 +474,47 @@
 
         </div> </main>
 
+        <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">⬆</button>
+
+            <script>
+                // 1. Sidebar Toggle Logic (Keep your existing one)
+                function toggleSidebar() {
+                    const sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('active');
+                }
+
+                document.addEventListener('click', function(event) {
+                    const sidebar = document.getElementById('sidebar');
+                    const btn = document.querySelector('.mobile-menu-btn');
+
+                    if (sidebar.classList.contains('active') &&
+                        !sidebar.contains(event.target) &&
+                        !btn.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+
+                // 2. Scroll To Top Logic
+                var mybutton = document.getElementById("scrollTopBtn");
+
+                window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                    // Show button when scrolled down 100px
+                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                }
+
+                function topFunction() {
+                    // Smooth scroll to top
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            </script>
+        </body>
+        
         <script>
                 function toggleSidebar() {
                     const sidebar = document.getElementById('sidebar');

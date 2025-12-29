@@ -184,3 +184,28 @@ h4.subsection-title { font-family: 'Lora', serif; font-size: 1.3rem; color: #7f8
 
     .page-title { font-size: 1.6rem; }
 }
+
+
+/* --- SCROLL TO TOP BUTTON STYLE --- */
+#scrollTopBtn {
+    display: none;       /* Hidden by default */
+    position: fixed;     /* Float over the content */
+    bottom: 20px;        /* 20px from bottom */
+    right: 30px;         /* 30px from right */
+    z-index: 5000;       /* Make sure it's on top */
+
+    /* Styling */
+    font-size: 24px;
+    border: none;
+    outline: none;
+    background-color: #e67e22; /* Orange color (visible) */
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;  /* Circle shape */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#scrollTopBtn:hover {
+    background-color: #d35400; /* Darker orange on hover */
+}
