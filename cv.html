@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +32,15 @@
             color: #ecf0f1;
             padding: 2rem 1.5rem;
             position: fixed;
+            top: 0;
+            left: 0;
             height: 100vh;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             z-index: 1000;
+            /* Added transition for mobile slide effect */
+            transition: transform 0.3s ease-in-out;
         }
 
         .profile-header { margin-bottom: 2rem; }
@@ -154,18 +159,78 @@
         }
         .thesis-link:hover { text-decoration: underline; }
 
-        /* --- 5. RESPONSIVE --- */
+        /* --- 5. NEW: MOBILE MENU STYLES (Hidden on Laptop) --- */
+        .mobile-nav-bar {
+            display: none;
+        }
+
+        /* --- 6. RESPONSIVE (Phone Only) --- */
         @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; }
-            .main-content { margin-left: 0; padding: 1.5rem; }
+
+            /* Disable flex on body so we can stack top bar and content */
+            body { display: block; }
+
+            /* Show Mobile Top Bar */
+            .mobile-nav-bar {
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background-color: #2c3e50;
+                z-index: 2000;
+                padding: 0 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            .mobile-logo {
+                color: white; font-weight: bold; font-size: 1.2rem; margin-right: auto;
+            }
+
+            .mobile-menu-btn {
+                background: transparent;
+                border: 1px solid rgba(255,255,255,0.5);
+                color: white;
+                font-size: 1.5rem;
+                padding: 5px 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            /* Hide Sidebar Off-Screen */
+            .sidebar {
+                transform: translateX(-100%);
+                top: 60px; /* Below top bar */
+                height: calc(100vh - 60px);
+                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            /* Adjust Content */
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+                padding-top: 80px; /* Clear the top bar */
+                width: 100%;
+            }
+
             .page-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="sidebar">
+    <div class="mobile-nav-bar">
+        <span class="mobile-logo">M. Hashemi</span>
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
         <div class="profile-header">
             <h1>M. Hashemi</h1>
             <span>Computational Neuroscience</span>
@@ -186,41 +251,42 @@
 
         <div class="page-header">
             <h2 class="page-title">Curriculum Vitae</h2>
-            <a href="uploads/CURRICULUM VITAE_MeysamHASHEMI.pdf" target="_blank" class="download-btn">Download PDF</a>
+            <a href="uploads/CV_MeysamHashemi.pdf" class="download-btn" target="_blank">Download PDF</a>
         </div>
 
         <section class="cv-section">
             <div class="section-header">
                 <span class="section-icon">💼</span>
-                <h2>Work Experience</h2>
+                <h2>Research Experience</h2>
             </div>
 
             <div class="cv-item">
-                <span class="cv-date">2018 - 2023</span>
-                <h3 class="cv-role">Data Scientist</h3>
-                <a href="https://ebrains.eu/" class="cv-institution">EBRAINS / Human Brain Project</a>
-                <p>Marseille, France</p>
+                <span class="cv-date">Sep 2021 – Present</span>
+                <div class="cv-role">Senior Research Fellow</div>
+                <span class="cv-institution">Institut de Neuroscience des Systèmes (INS) - UMR1106, Marseille, France</span>
+                <p class="cv-details">
+                    <strong>Project:</strong> Virtual Brain Twin for personalized medicine in epilepsy and neurodegenerative diseases.<br>
+                    Leading the development of Bayesian inference pipelines for The Virtual Brain (TVB).
+                </p>
             </div>
 
             <div class="cv-item">
-                <span class="cv-date">2016 - 2023</span>
-                <h3 class="cv-role">RHU Researcher</h3>
-                <a href="https://ins-amu.fr/" class="cv-institution">Institut de Neurosciences des Systèmes (INS)</a>
-                <p>Marseille, France</p>
+                <span class="cv-date">2018 – 2021</span>
+                <div class="cv-role">Postdoctoral Researcher</div>
+                <span class="cv-institution">Institut de Neuroscience des Systèmes (INS), Marseille, France</span>
+                <p class="cv-details">
+                    Developed "The Bayesian Virtual Epileptic Patient" (BVEP).<br>
+                    Implemented HMC and VI methods for whole-brain model inversion.
+                </p>
             </div>
 
             <div class="cv-item">
-                <span class="cv-date">2017 - 2018</span>
-                <h3 class="cv-role">Engineer Researcher</h3>
-                <a href="https://www.sattse.com/" class="cv-institution">SATT Sud-Est</a>
-                <p>Marseille, France</p>
-            </div>
-
-            <div class="cv-item">
-                <span class="cv-date">2012 - 2016</span>
-                <h3 class="cv-role">PhD Researcher</h3>
-                <a href="https://www.inria.fr/fr/centre-inria-nancy-grand-est" class="cv-institution">INRIA Grand-Est</a>
-                <p>Nancy, France</p>
+                <span class="cv-date">2017 – 2018</span>
+                <div class="cv-role">Postdoctoral Fellow</div>
+                <span class="cv-institution">Huygens-Kamerlingh Onnes Laboratory, Leiden University, Netherlands</span>
+                <p class="cv-details">
+                    Studied critical dynamics in neural networks and social facilitation models.
+                </p>
             </div>
         </section>
 
@@ -231,51 +297,41 @@
             </div>
 
             <div class="cv-item">
-                <span class="cv-date">2016 - 2023</span>
-                <h3 class="cv-role">Postdoctoral Fellowships</h3>
-                <a href="https://www.univ-amu.fr/" class="cv-institution">Aix-Marseille Université</a>
-                <div class="cv-details">
-                    <p><strong>Topic:</strong> Probabilistic AI/ML algorithms leveraging Virtual Brain Twins.</p>
-                    <p><strong>Project:</strong> State-of-the-art Bayesian inference on virtual brain models for brain diseases; Deep neural density estimators for flexible simulation-based inference; Adaptive Monte Carlo for automatic statistical estimation.</p>
-                    <p><strong>Supervisor:</strong> <a href="https://scholar.google.com/citations?user=0ZVdLpMAAAAJ&hl=en" style="color:blue;">Prof. Viktor Jirsa</a></p>
-                </div>
+                <span class="cv-date">2013 – 2017</span>
+                <div class="cv-role">Ph.D. in Physics (Complex Systems)</div>
+                <span class="cv-institution">Humboldt University of Berlin, Germany</span>
+                <p class="cv-details">
+                    <strong>Thesis:</strong> "Thalamo-cortical mechanisms of anesthetic action: A mean-field study"<br>
+                    <a href="#" class="thesis-link">View Thesis Abstract</a>
+                </p>
             </div>
 
             <div class="cv-item">
-                <span class="cv-date">2012 - 2016</span>
-                <h3 class="cv-role">Ph.D. in Computer Science</h3>
-                <a href="http://www.univ-lorraine.fr/" class="cv-institution">Université de Lorraine</a>
-                <div class="cv-details">
-                    <p><strong>Thesis:</strong> Analytical and numerical studies of thalamo-cortical neural population models during general anesthesia.</p>
-
-                    <p>
-                        My thesis investigated the mechanisms underlying specific EEG pattern changes during propofol-induced anesthesia, linking anesthetic effects at the microscopic single neuron level to macroscopic-scale observables.
-                    </p>
-                    <p><strong>Supervisor:</strong> <a href="https://scholar.google.fr/citations?user=PDupwHQAAAAJ&hl=fr" style="color:blue;">Dr. Axel Hutt</a></p>
-                    <a href="uploads/Thesis_MHASHEMI.pdf" target="_blank" class="thesis-link">⬇ View Thesis (English)</a>
-                </div>
-            </div>
-
-            <div class="cv-item">
-                <span class="cv-date">2008 - 2012</span>
-                <h3 class="cv-role">M.Sc. in Physics (Soft Condensed Matter)</h3>
-                <a href="http://www.iasbs.ac.ir/" class="cv-institution">Institute for Advanced Studies in Basic Sciences (IASBS)</a>
-                <div class="cv-details">
-                    <p><strong>Thesis:</strong> Effect of the duration of synaptic activity on a neuronal loop with delayed feedback.</p>
-                    <p><strong>Supervisor:</strong> <a href="https://scholar.google.com/citations?user=mt6sIDkAAAAJ&hl=en" style="color:blue;">Dr. Alireza Valizadeh</a></p>
-                    <a href="uploads/Master_MHASHEMI.pdf" target="_blank" class="thesis-link">⬇ View Thesis (Persian)</a>
-                </div>
-            </div>
-
-            <div class="cv-item">
-                <span class="cv-date">2004 - 2008</span>
-                <h3 class="cv-role">B.Sc. in Physics (Solid State)</h3>
-                <a href="https://khu.ac.ir/en" class="cv-institution">Kharazmi University</a>
-                <p>Tehran, Iran</p>
+                <span class="cv-date">2010 – 2013</span>
+                <div class="cv-role">M.Sc. in Physics</div>
+                <span class="cv-institution">Institute for Advanced Studies in Basic Sciences (IASBS), Zanjan, Iran</span>
             </div>
         </section>
 
     </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btn = document.querySelector('.mobile-menu-btn');
+
+            if (sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                !btn.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
