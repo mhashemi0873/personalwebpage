@@ -122,9 +122,11 @@
             body { display: block; }
 
             /* Mobile Top Bar Styles */
+            /* Show the Mobile Top Bar */
             .mobile-nav-bar {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -135,20 +137,21 @@
                 padding: 0 15px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             }
-
-            .mobile-logo {
-                color: white; font-weight: bold; font-size: 1.2rem; margin-right: auto;
-            }
-
             .mobile-menu-btn {
                 background: transparent;
                 border: 1px solid rgba(255,255,255,0.5);
                 color: white;
                 font-size: 1.5rem;
+                cursor: pointer;
                 padding: 5px 10px;
                 border-radius: 4px;
-                cursor: pointer;
             }
+            .mobile-logo {
+                color: white;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
 
             /* Hide Sidebar Off-Screen */
             .sidebar {
@@ -174,11 +177,12 @@
 </head>
 <body>
 
-    <div class="mobile-nav-bar">
-        <span class="mobile-logo">M. Hashemi</span>
-        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-    </div>
 
+    <div class="mobile-nav-bar">
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+        <span class="mobile-logo">M.  Hashemi</span>
+    </div>
+    
     <nav class="sidebar" id="sidebar">
         <div class="profile-header">
             <h1>M. Hashemi</h1>
