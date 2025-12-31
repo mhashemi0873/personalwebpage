@@ -291,12 +291,8 @@ h4.subsection-title {
         box-shadow: 2px 0 5px rgba(0,0,0,0.2);
     }
 
-    /* Hide mobile logo when sidebar is open */
-    .sidebar. active ~ .mobile-nav-bar .  mobile-logo,
-    body.  menu-open . mobile-logo {
-        display: none ! important;
-        opacity: 0 !important;
-        visibility: hidden !important;
+    .sidebar. active {
+        transform: translateX(0);
     }
 
     .main-content {

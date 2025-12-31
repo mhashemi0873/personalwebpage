@@ -247,20 +247,10 @@
 </head>
 <body>
 
-  <!-- Mobile Top Bar -->
-  <div class="mobile-nav-bar">
-      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-      <span class="mobile-logo">M.  Hashemi</span>
-  </div>
-
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-      <div class="profile-header">
-          <h1>M. Hashemi</h1>
-          <span>Computational Neuroscientist</span>
-      </div>
-      <!-- nav links -->
-  </div>
+    <div class="mobile-nav-bar">
+        <span class="mobile-logo">M. Hashemi</span>
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    </div>
 
     <nav class="sidebar" id="sidebar">
         <div class="profile-header">
@@ -571,7 +561,6 @@
                 const sidebar = document.getElementById('sidebar');
                 sidebar.classList.toggle('active');
             }
-            
 
             document.addEventListener('click', function(event) {
                 const sidebar = document.getElementById('sidebar');
