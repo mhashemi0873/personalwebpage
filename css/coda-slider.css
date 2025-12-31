@@ -81,21 +81,43 @@ ul, ol { list-style: none; margin:  0; padding: 0; }
 }
 
 .nav-links li { margin-bottom: 1rem; }
-. nav-links a {
+.nav-links a {
     display: flex;
     align-items: center;
-    padding: 12px 10px;  /* Slightly larger padding */
+    padding: 12px 10px;
     border-radius: 5px;
-    color: #fecdd3;
-    font-size: 1.2rem;  /* Increased from 1.1rem */
-    font-weight: 500;
+    color: #ffffff;
+    font-size: 1. 1rem;
+    font-weight: 700;  /* Increased from 600 - BOLD */
+    opacity: 1;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.8);  /* Slight white glow */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-.nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
+. nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.25);  /* Brighter hover */
+    color: #ffffff;
     padding-left: 15px;
+    opacity: 1;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 1);  /* Stronger glow on hover */
 }
-.nav-links a:: before { content: "➤"; margin-right: 12px; font-size: 0.9rem; }
+. nav-links a:: before {
+    content: "➤";
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+    opacity: 1;
+    filter: brightness(1.2);  /* Make arrow brighter */
+}
+
+/* Force ultra-white navigation */
+.sidebar . nav-links a {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    filter: brightness(1.1);  /* Make text brighter */
+}
+
 
 /* --- MAIN CONTENT (Desktop) --- */
 .main-content {
@@ -247,12 +269,19 @@ h4.subsection-title {
         cursor: pointer;
     }
 
-    . mobile-logo {
+    /* Transition for smooth hide/show */
+    .mobile-logo {
         color: white;
         font-weight: bold;
-        font-size: 1.4rem;  /* Increased from 1.2rem */
-        margin-left:  15px;
+        font-size: 1.2rem;
+        margin-left: 15px;
         font-family: 'Cinzel', serif;
+        transition:  opacity 0.3s ease;  /* Smooth fade */
+    }
+
+    . mobile-logo. hidden {
+        opacity: 0;
+        pointer-events: none;
     }
 
     . sidebar {
