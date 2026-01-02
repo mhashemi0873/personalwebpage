@@ -248,16 +248,57 @@
         <section class="intro">
             <h2>About My Work</h2>
             <p>
+              My main methodological contribution involves multimodal and multiscale inference methods. These tools represent the state-of-the-art <strong>probabilistic ML </strong> and <strong>generative AI</strong>that model uncertainty and make predictions over all possible outcomes rather than only a single value.
+              Notably, probabilistic ML, once validated using <strong>mechanistic models</strong>, can be used in scenarios where experiments are prohibitive.
+              In contrast, generative AI is typically trained on large datasets and is designed to operate across <strong> spatiotemporal scales</strong> rather than making predictions about a specific dataset.
+
                 I aim to build inference tools that are automatic, flexible, and scalable. Technically, I have developed:
                 <br><br>
                 <strong>(1) Adaptive Markov Chain Monte Carlo algorithms </strong> for unbiased hypothesis comparison,<br>
                 <strong>(2) Amortized simulation-based inference methods</strong> leveraging probabilistic deep learning.
                 <br><br>
+
                 These tools address challenges in Bayesian inference from brain recordings across multiple spatiotemporal scales and are integrated into the
                 <a href="https://www.ebrains.eu" target="_blank" style="color: #2ecc71; font-weight: bold;">EBRAINS</a> platform.
             </p>
             <a href="https://github.com/mhashemi0873" class="github-btn" target="_blank">View My GitHub</a>
         </section>
+
+
+        <section class="content-section intro-box" style="padding: 3rem; margin-top: 4rem; margin-bottom: 4rem; clear: both; display: block;">
+            <h3 class="section-title" style="margin-top: 0; color: var(--sidebar-bg); border-bottom: 2px solid var(--border-color); padding-bottom: 15px;">
+                Advanced Inference Methodologies
+            </h3>
+
+            <div class="figure-container" style="text-align: center; margin: .0rem 0; background: #ffffff; padding: 0.rem; border-radius: 12px; border: 1px solid var(--border-color);">
+              <img src="images/BayesianMethods.png" style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto;">
+
+            </div>
+
+            <div class="inference-description" style="padding: 0 1rem; margin-top: 2rem;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1.8rem; display: flex; gap: 15px; align-items: flex-start;">
+                        <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
+                        <span style="text-align: justify;"><strong>Adaptive Markov chain Monte Carlo (MCMC):</strong> A class of stochastic algorithms used to draw samples from probability distributions without requiring full knowledge about the distribution. This approach is exact, and its adaptive strategy automatically tunes the algorithm’s hyperparameters (e.g., in Stan, PyMC, Pyro).</span>
+                    </li>
+                    <li style="margin-bottom: 1.8rem; display: flex; gap: 15px; align-items: flex-start;">
+                        <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
+                        <span style="text-align: justify;"><strong>Amortized Simulation-based inference (SBI):</strong> A probabilistic inference that uses a class of deep learning so-called <em>normalizing-flows</em> to make efficient inferences about complex systems. Amortization strategy refers to the idea of reusing learned computations for fast inference on new data without re-training.</span>
+                    </li>
+                    <li style="margin-bottom: 1.8rem; display: flex; gap: 15px; align-items: flex-start;">
+                        <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
+                        <span style="text-align: justify;"><strong>Variational and Laplace inference:</strong> Approximation methods that replace complex posterior distributions with simpler forms and recast sampling as an optimization problem, e.g., used in DCM.</span>
+                    </li>
+                    <li style="margin-bottom: 0; display: flex; gap: 15px; align-items: flex-start;">
+                        <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2rem; line-height: 1;">•</span>
+                        <span style="text-align: justify;"><strong>Neural ODEs:</strong> Generative models that generate new samples resembling the original dataset.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
 
         <div class="project-list">
 
