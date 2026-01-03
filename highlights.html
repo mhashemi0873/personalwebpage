@@ -224,51 +224,352 @@
             <h2 class="page-title">Research Vision & Highlights</h2>
         </div>
 
-        <div class="highlight-card">
-
-
-
-            <p>
-
-            <i>Inspired by Prof. Viktor Jirsa.</i>
-                <br>
-                <br>
+        <div class="highlight-card" style="padding: 2.5rem;">
+            <p style="font-size: 1.2rem; line-height: 1.8; text-align: justify; margin-bottom: 1.5rem; color: #334155;">
+                <i style="color: #64748b;">Inspired by Prof. Viktor Jirsa.</i>
+                <br><br>
                 <strong>Brain disorders</strong> confront us with a paradox that is rooted in two opposing realities. On the one hand, we have more data than ever (from multimodal imaging to electrophysiology). On the other hand, clinical action remains constrained by population averages and by the absence of a mechanistic theory that can be trusted at the individual level—especially in neurological disorders and psychiatry, where heterogeneity and comorbidity dominate.
             </p>
 
-            <p>
+            <p style="font-size: 1.2rem; line-height: 1.8; text-align: justify; margin-bottom: 1.5rem; color: #334155;">
                 A central reason for this gap is <strong>mechanistic uncertainty</strong>.
-                For most phenotypes, multiple causal mechanisms are plausible; different modeling and inference approaches often test one mechanism (or one family) at a time and obtain slightly different—sometimes incompatible—answers. This is not only a “methods” problem: in multiscale systems like the brain, different mechanisms can produce similar emergent behavior (a form of degeneracy), meaning that the same data can be explained by multiple causal stories unless we explicitly quantify uncertainty and compare hypotheses.
+                For most phenotypes, multiple causal mechanisms are plausible; different modeling and inference approaches often test one mechanism (or one family) at a time and obtain slightly different—sometimes incompatible—answers.
             </p>
 
-
-
-            <p>
+            <p style="font-size: 1.2rem; line-height: 1.8; text-align: justify; margin-bottom: 1.5rem; color: #334155;">
                 In a degenerate system, reliable mechanism-based prediction requires convergence across inference methods and mechanistic hypotheses toward a <strong>minimally sufficient common denominator of causality</strong>.
                 Concretely, when inference is constrained by multimodal anatomical/functional data, we can:
             </p>
 
-            <ul class="causal-list">
-                <li>(i) Infer probability rather than single best-fit solution,</li>
-                <li>(ii) Compare competing mechanistic hypotheses, and</li>
-                <li>(iii) Identify what is stable across methods and models.</li>
+            <ul class="causal-list" style="font-size: 1.2rem; line-height: 1.5; list-style: none; padding: 0.2; margin-top: 0rem; margin-bottom: 1rem; color: #334155;">
+                <li style="margin-bottom: 1.2rem; padding-left: 20px; border-left: 3px solid #1e3a8a;">
+                    (i) Infer probability rather than single best-fit solution,
+                </li>
+                <li style="margin-bottom: 1.2rem; padding-left: 20px; border-left: 3px solid #1e3a8a;">
+                    (ii) Compare competing mechanistic hypotheses, and
+                </li>
+                <li style="margin-bottom: 0rem; padding-left: 20px; border-left: 3px solid #1e3a8a;">
+                    (iii) Identify what is stable across methods and models.
+                </li>
             </ul>
 
-
-
-            <p>
+            <p style="font-size: 1.2rem; line-height: 1.8; text-align: justify; margin-bottom: 0; color: #334155;">
                 The result is a <strong>consensus causal core</strong> that is robust enough to support validation and clinical interpretation.
+            </p>
+        </div>
 
+        <br>
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+                Bayesian inference vs. Frequentist inference
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+                Virtual brain modelling has gained popularity in neuroscience due to its potential to enhance medical treatments and intervention strategies. This transformative approach combines patient-specific structural data with mathematical models to simulate spatiotemporal brain activity and its associated imaging recordings, such as magneto/electroencephalography (MEG/EEG), stereo EEG (SEEG), and fMRI. However, model inversion (finding the parameter set that best explains the data) at such large-scale presents formidable challenges due to non-trivial network effects, noise, and non-linearity. Previous studies relied on optimization algorithms (i.e., point estimation) that are limited to integrate the background knowledge (e.g., clinical expertise). Furthermore, statistical and geometrical dependencies, such as degeneracy, add another layer of complexity in revealing causality with associated uncertainty. This is crucial for validation, to ensure that model predictions are trustworthy.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/BayesianInference.png"
+                     alt="Bayesian Inference Diagram"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+        </div>
+
+
+
+        <br>
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+                Bayesian Virtual Epileptic Patient (BVEP)
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            Epilepsy surgery is a major intervention for drug-resistant epilepsy, yet decisions are based on limited electrode coverage and visual assessment by neurologists. A patient benefit from surgery only if the resected tissue truly contains the epileptogenic zone (EZ)—the region capable of initiating seizures. However, the EZ cannot be directly observed; it must be inferred from sparse SEEG recordings, patient history, and imaging. Critically, multiple EZ hypotheses can fit the same data.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/BVEP.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main refs:<br>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303268" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., NeuroImage (2020)
+                    </a>
+                    <br>
+                    <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009129" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., PLOS CB (2021)
+                    </a>
             </p>
 
         </div>
+
         <br>
 
-        <div class="highlight-card blue-accent">
-            <h3>Advanced Inference Methodologies</h3>
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+                The Bayesian Pharmacometrics for Alcohol Use Disorder
+            </h3>
 
-            <img src="images/inference_methods.png" style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 20px auto;">
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+             Baclofen, as a selective GABAB receptor agonist, has emerged as a promising drug for the treatment of Alcohol use disorder (AUD). However, the longitudinal inter-trial, and inter-individual variability in drug concentration in patients with AUD is unknown. We developed a hierarchical Bayesian workflow to estimate the parameters of a pharmacodynamic/pharmacokinetic (PD/PK) population model from Baclofen administration. The retrospective clinical data were already collected at Sainte Marguerite Hospital in Marseille by <a href="https://scholar.google.fr/citations?user=eFcbGBUAAAAJ&hl=en" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">N. Simon</a>, and the work was co-led with  <a href="https://scholar.google.com/citations?user=0ZVdLpMAAAAJ&hl=en" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">V. Jirsa</a> at INS, Aix-Marseille University.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/AUC.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main ref:<br>
+                    <a href="https://iopscience.iop.org/article/10.1088/2632-2153/acf6aa" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Baldy et al., MLST (2020)
+                    </a>
+            </p>
+
+
         </div>
+
+        <br>
+
+
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+              Virtual Brain Inference (VBI); Probabilistic inference across modalities
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            MCMC succeeded in epilepsy due to the invasive SEEG implantation available only to surgical candidates. To impact the broader patient population, inference must scale to non-invasive recordings. However, these modalities present different challenges: lower temporal resolution (fMRI: 1-2 sec), lower signal-to-noise (EEG/MEG from scalp vs. intracranial), Longer recordings without discrete "events" like seizure onsets,  and more computationally expensive forward models (e.g., hemodynamic equations). To address this, we developed a likelihood-free method leveraging advanced deep generative algorithms (called normalizing-flows) to learn the posterior from simulations; If we can simulate the forward model (generate synthetic SEEG/EEG/fMRI from hypothesized parameters), then we are able to train a neural density estimator to learn the inverse mapping (between data and posterior) without explicit computing the likelihood and Markovian property. Then, funded by the EBRAINS 2.0, we designed an open-source toolkit called
+            <a href="https://search.kg.ebrains.eu/instances/83d0256f-42d4-465d-bd20-31c99276f300" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">VBI</a>, implemented by
+             <a href="https://scholar.google.com/citations?user=rmsueR0AAAAJ&hl=en" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">A. Ziaee</a>, and the work was co-led with  <a href="https://scholar.google.com/citations?user=0ZVdLpMAAAAJ&hl=en" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">V. Jirsa</a> used in multiple international collaborations, demonstrating its generality and robustness.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/VBI.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <br>
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            As a proof of concept, training the <strong>VBI</strong> toolkit on data features—such as static and dynamic functional connectivity (FC/FCD), power spectral density (PSD), and seizure envelopes from SEEG data—has demonstrated the potential and clinical relevance for multimodal inference.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/VBI_features.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main refs:<br>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0893608023001752" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., Neural Networks (2023)
+                    </a>
+                    <br>
+                    <a href="https://iopscience.iop.org/article/10.1088/2632-2153/ad6230" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., MLST (2024)
+                    </a>
+                    <br>
+                    <a href="https://elifesciences.org/articles/106194" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Ziaee et al., eLife (2025)
+                    </a>
+            </p>
+
+        </div>
+
+        <br>
+
+
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+              Probing other’s Presence; Probabilistic inference across brain scales
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+      An important open question is how the activity of neural subpopulations during behavior reflects their causal function. Challenges such as time-scale, granularity, along with averaging methods, obscure patterns of individual cell activity. For instance, the influence of social presence on behavior has been among the focal points of investigation in social psychology for over a century; however, its underlying neural mechanisms remain unknown. We attempted to bridge this gap by investigating how the presence of conspecifics changes effective connectivity from measurements across brain scales (single neurons, ERPs, and EEG). We provided a solution by investigating how the presence of others alters excitation/inhibition balance across brain scales—from single neurons and evoked potentials to whole-brain EEG. This study was conducted on published data by
+      <a href="https://scholar.google.fr/citations?user=3mDA50oAAAAJ&hl=fr" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">D. Boussaoud</a> and conducted by
+      <a href="https://orcid.org/0000-0001-7245-6224" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">A. Esmaeili</a> funded by Marie Skłodowska-Curie Actions.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/ProbabaliticAcrossScales.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main ref:<br>
+                    <a href="https://www.nature.com/articles/s42003-025-08971-3" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Esmaeili et al.,  Nature Communication Biology (2025)
+                    </a>
+            </p>
+
+        </div>
+
+        <br>
+
+
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+              Virtual Multiple Sclerosis Patient
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            Multiple sclerosis is typically diagnosed based on the clinical presentation, such as structural MRI lesions, and the “no better explanation” criterion. However, a conflicting scenario often arises, where a high lesion load is associated with mild clinical impairment, and vice versa—a phenomenon referred to as the “clinico-radiological paradox”. To address this, we conducted international, multicenter study to estimate averaged time-delay from MEG data recorded at the University of Naples by
+           <a href="https://scholar.google.nl/citations?user=T1k8qBsAAAAJ&hl=en" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">P. Sorrentino</a>.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/VBMS.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main ref:<br>
+                    <a href="https://www.cell.com/iscience/fulltext/S2589-0042(24)01326-9?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2589004224013269%3Fshowall%3Dtrue" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Sorrentino et al., iScience (2024)
+                    </a>
+            </p>
+
+        </div>
+
+        <br>
+
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+            Virtual Brain Twins (VBTs)
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+              Using the developed inference tools, several (international) collaborations were then conducted to construct mechanistic/causal frameworks for studying brain (dys)functioning;
+              In <strong>stimulation</strong>, we showed that perturbing brain states is effective for estimating the level of degradation in the limbic system, which is patented.
+              In <strong>Alzheimer’s disease</strong>, we combined structural brain topographies with excitotoxicity or postsynaptic depression to model how Aβ and pTau affect neuronal activity. Inference showed that excitotoxicity is a necessary mechanism to replicate key biomarkers, such as reduced fluidity (i.e., the switch between networks to cognitive demands), improving prediction over traditional methods.
+              In <strong>Parkinson’s disease</strong>, from EEG data and deep electrodes placed near the subthalamic nuclei, we correctly inferred dopaminergic changes before and after L-Dopa administration.
+              In <strong>healthy aging</strong>, causal inference showed increased neuromodulation as a compensation mechanism for inter-hemispheric degradation in individuals with high cognitive performance.
+              In <strong>Virtual Mouse Brain</strong>, we showed that the targeted interventions (thalamic lesions, and chemogenetic silencing) in a specific region can influence the activity throughout the entire brain.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/VBTs_applications.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <br>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            These studies led to the development of  <a href="https://www.ebrains.eu/news-and-events/personalised-virtual-brain-twins" target="_blank" style="color:blue; font-weight: 500; text-decoration: underline;">Virtual Brain Twins</a>—digital replicas of individual brains designed to assist decision-making in diagnostics, prognosis, and therapy. Recently, we summarized these advances in a detailed review paper, covering the conceptual, mathematical, technical, and clinical aspects. We described the stages of their construction—from anatomical coupling and modeling to simulation and inference—and demonstrated case studies in resting state and neurological disorders.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/VBTs.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main ref:<br>
+                    <a href="https://ieeexplore.ieee.org/document/10972118" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., RBME (2025)
+                    </a>
+            </p>
+
+            <div class="highlight-card" style="
+            background-color: #fffaf0;
+            border: 1px solid #fed7aa;
+            border-left: 5px solid #f97316;
+            border-radius: 8px;
+            /* ADJUST THESE FOR SPACE TO TOP AND BOTTOM INSIDE BOX */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin: 2rem 0;">
+
+            <p style="margin: 0; font-size: 1.2rem; line-height: 1.8; color: #334155; text-align: justify;">
+           This work integrates <strong>Bayesian inference</strong> with advanced computational models to enhance clinical <strong> decision-making</strong> for a range of brain conditions. By combining heterogenous data and inference algorithms, this approach provides <strong>causal/mechanistic</strong> insights into brain (dys)function, improving prediction accuracy and potentially therapeutic strategies.
+            </p>
+          </div>
+
+        </div>
+
+        <br>
+
+
+        <div class="highlight-card blue-accent" style="padding: 2.5rem;">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.8rem; border-bottom: 2px solid #dbeafe; padding-bottom: 10px;">
+              Fitting a thalamo-cortical model to EEG during general anesthesia
+            </h3>
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+              General anesthesia is essential for surgical procedures, yet its precise mechanisms remain elusive. We designed and analyzed a new mathematical framework and implemented bio-inspired optimization techniques to understand how anesthetic actions at the molecular level (receptor occupation, synaptic and extra-synaptic inhibition) translate into measurable EEG signatures of loss and recovery of consciousness.
+              Our hypothesis was that consciousness transitions involve a phase transition in neural dynamics, characterized by a sharp drop in population firing rate, visible in EEG recordings. Testing this required mechanistic modeling and efficient parameter estimation that bridges molecular-to-systems levels while remaining computationally tractable.
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/TCMethods.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+
+            <p style="line-height: 1.8; text-align: justify; margin-bottom: 1rem; color: #334155; font-size: 1.2rem;">
+            Taking this apprach;
+            </p>
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/Anesthesia_Res1.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+
+            <div style="text-align: center; margin-top: 0rem;">
+                <img src="images/Anesthesia_Res2.png"
+                     style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0px auto; border-radius: 8px; border: none;">
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 1rem; color: #64748b;">
+                    Main refs:<br>
+                    <a href="https://link.springer.com/article/10.1007/s12021-018-9369-x" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., Neuroinformatics (2018)
+                    </a>
+                    <br>
+                    <a href="https://link.springer.com/article/10.1007/s10827-015-0569-1" target="_blank" style="color: #f97316; font-weight: 600; text-decoration: underline;">
+                        Hashemi et al., J Comput Neurosci. (2015)
+                    </a>
+                    <br>
+
+            <div class="highlight-card" style="
+            background-color: #fffaf0;
+            border: 1px solid #fed7aa;
+            border-left: 5px solid #f97316;
+            border-radius: 8px;
+            /* ADJUST THESE FOR SPACE TO TOP AND BOTTOM INSIDE BOX */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin: 2rem 0;">
+
+            <p style="margin: 0; font-size: 1.2rem; line-height: 1.8; color: #334155; text-align: justify;">
+                A key finding of this work is that
+                the &delta;- and &alpha;-rhythms arise from fundamentally different mechanisms.
+                Changes in the <strong>&delta;-rhythm</strong> primarily result from alterations in (extra-)synaptic <strong>GABAergic inhibition</strong>,
+                whereas the emergence of the <strong>&alpha;-rhythm</strong> is heavily dependent on the <strong>time-delay
+                in the feedback loops </strong> between the thalamus and cortex.
+            </p>
+          </div>
+
+        </div>
+
+        <br>
+
+
+
+
 
     </main>
 

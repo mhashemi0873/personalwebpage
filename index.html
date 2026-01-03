@@ -139,8 +139,12 @@
             border: 1px solid #bbdefb;
         }
         .resource-btn:hover { background: #bbdefb; }
-        .resource-btn::before { content: "⬇"; margin-right: 8px; }
-
+        .resource-btn::before {
+            content: "⬇";
+            margin-right: 12px;
+            font-size: 2rem;
+            font-weight: 400;
+        }
         .research-list li {
             margin-bottom: 1.5rem;
             padding-left: 1rem;
@@ -269,9 +273,11 @@
             </div>
         </section>
 
-        <div class="consulting-banner">
-            Hire me for consulting services and tutorials!
-        </div>
+        <a href="contacts.html" style="text-decoration: none;">
+            <div class="consulting-banner">
+                Hire me for consulting services and tutorials!
+            </div>
+        </a>
 
         <section class="content-block">
             <h3 class="section-title">What is inference and how to make inference?</h3>
@@ -293,21 +299,21 @@
 
         <section class="content-block">
             <h3 class="section-title">I perform probabilistic inference for:</h3>
-            <ul class="research-list">
-                <li>
-                    <span class="research-type">Cohort studies</span>
+            <ul class="research-list" style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 2rem; line-height: 1.6; text-align: justify;">
+                    <span class="research-type" style="display: block; font-weight: bold; margin-bottom: 5px;">Cohort studies</span>
                     Focusing on longitudinal trajectories, which do not necessarily require a control group.
                 </li>
-                <li>
-                    <span class="research-type">Case-Control studies</span>
+                <li style="margin-bottom: 2rem; line-height: 1.6; text-align: justify;">
+                    <span class="research-type" style="display: block; font-weight: bold; margin-bottom: 5px;">Case-Control studies</span>
                     Disregarding heterogeneity and instead focusing on the average patient. This approach is often noninformative for constructing models in neurodegenerative and psychiatric disorders.
                 </li>
-                <li>
-                    <span class="research-type">Normative studies</span>
+                <li style="margin-bottom: 2rem; line-height: 1.6; text-align: justify;">
+                    <span class="research-type" style="display: block; font-weight: bold; margin-bottom: 5px;">Normative studies</span>
                     An emerging approach for quantifying and describing how individuals deviate from expected patterns learned from a healthy population (e.g., using GAMLSS models).
                 </li>
-                <li>
-                    <span class="research-type">Personalized Causal studies in precision medicine</span>
+                <li style="margin-bottom: 1rem; line-height: 1.6; text-align: justify;">
+                    <span class="research-type" style="display: block; font-weight: bold; margin-bottom: 5px;">Personalized Causal studies in precision medicine</span>
                     Focusing on individualized anatomical data and mechanistic models, inverted by state-of-the-art probabilistic inference methods (e.g., Adaptive Hamiltonian Monte Carlo and Normalizing Flows).
                 </li>
             </ul>
@@ -331,17 +337,20 @@
                 Recently, I have designed probabilistic tools for automatic Dynamic Causal Modeling and inference across brain scales and neuroimaging modalities (MEG/EEG, SEEG, fMRI). These studies led to the development of Virtual Brain Twins—digital replicas of individual brains designed to assist clinical decision-making in diagnostics, prognosis, and therapy.
             </p>
 
-            <div style="margin-top: 1.5rem;">
-                <strong>I have extensively used the software:</strong>
-                <div class="software-tags">
-                    <a href="https://www.thevirtualbrain.org/tvb/zwei" class="tag">TVB</a>
-                    <a href="https://mc-stan.org/" class="tag">Stan</a>
-                    <a href="https://docs.pymc.io/en/v3/index.html" class="tag">PyMC3</a>
-                    <a href="https://num.pyro.ai/en/latest/index.html" class="tag">NumPyro</a>
-                    <a href="https://scikit-learn.org/stable/" class="tag">scikit-learn</a>
-                    <a href="https://www.mackelab.org/sbi/" class="tag">SBI</a>
+            <div style="margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <strong style="display: block; margin-bottom: 1rem; font-size: 1.1rem; color: #1e3a8a;">
+                    I have extensively used the software:
+                </strong>
+                <div class="software-tags" style="display: flex; flex-wrap: wrap; gap: 6px; line-height: 0.5;">
+                    <a href="https://www.thevirtualbrain.org/tvb/zwei" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">TVB</a>
+                    <a href="https://mc-stan.org/" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">Stan</a>
+                    <a href="https://docs.pymc.io/en/v3/index.html" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">PyMC3</a>
+                    <a href="https://num.pyro.ai/en/latest/index.html" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">NumPyro</a>
+                    <a href="https://scikit-learn.org/stable/" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">scikit-learn</a>
+                    <a href="https://www.mackelab.org/sbi/" class="tag" style="padding: 10px 20px; font-size: 1rem; border-radius: 4px;">SBI</a>
                 </div>
             </div>
+
         </section>
 
     </main>
