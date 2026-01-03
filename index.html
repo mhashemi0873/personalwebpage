@@ -262,7 +262,7 @@
                 <h2>Welcome to my page!</h2>
                 <p>
                     Currently, I am a Senior Research Fellow at
-                    <a href="https://ins-amu.fr/" target="_blank" style="color: blue; font-weight: bold;">INS (UMR1106)</a>.
+                    <a href="https://ins-amu.fr/" target="_blank" style="color: #1e3a8a; font-weight: bold;">INS (UMR1106)</a>.
                 </p>
                 <p>
                     My work aims to infer the causal mechanisms using <strong>Virtual Brain Twins</strong>, leveraged by probabilistic inference to enhance diagnostics, targeted interventions, therapies, and clinical decision-making.
@@ -282,10 +282,41 @@
         <section class="content-block">
             <h3 class="section-title">What is inference and how to make inference?</h3>
 
-            <div class="resource-links">
-                <a href="uploads/WhatIsInference.mp4" class="resource-btn">Watch Video</a>
-                <a href="uploads/WhatIsInference.key" class="resource-btn">Download Keynote</a>
-                <a href="uploads/WhatIsInference.pptx" class="resource-btn">Download PowerPoint</a>
+            <div class="resource-links" style="margin-top: 1.5rem; display: flex; gap: 12px; flex-wrap: wrap;">
+                <style>
+                    .resource-btn-blue {
+                        background-color: #1e3a8a;
+                        color: white;
+                        padding: 10px 22px;
+                        text-decoration: none;
+                        border-radius: 6px;
+                        font-weight: 600;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        border: none;
+                    }
+                    .resource-btn-blue:hover {
+                        background-color: #162a63;
+                        transform: translateY(-2px);
+                        color: #ffffff;
+                    }
+                    .icon {
+                        margin-right: 8px;
+                        font-size: 1.1rem;
+                    }
+                </style>
+
+                <a href="uploads/WhatIsInference.mp4" class="resource-btn-blue">
+                    <span class="icon">▶</span> Watch Video
+                </a>
+                <a href="uploads/WhatIsInference.key" class="resource-btn-blue">
+                    <span class="icon">⬇</span> Download Keynote
+                </a>
+                <a href="uploads/WhatIsInference.pptx" class="resource-btn-blue">
+                    <span class="icon">⬇</span> Download PowerPoint
+                </a>
             </div>
 
             <p>
